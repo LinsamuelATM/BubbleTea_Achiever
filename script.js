@@ -14,7 +14,7 @@ console.log(newListForm)
 let lists = [ 
 {
     id: 1 ,
-    name: 'name' 
+    name: '' 
 }, {
     id:2,
     name: 'todo'
@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", function render(){
 )
 
 function clearElement() {
+
+
 
 }
 
