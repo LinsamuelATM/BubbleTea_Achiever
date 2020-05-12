@@ -1,57 +1,190 @@
-var newListForm = null;
-var newListInput = null;
+
+//selectors
+const todoInput = document.querySelector('.todo-input');
+const todoButton = document.querySelector('.todo-button');
+const todoList= document.querySelector('.todo-list');
+const filterOption = document.querySelector('.fliter-todo')
 
 
-document.addEventListener("DOMContentLoaded", function() {
-     newListForm = document.querySelector('[data-new-list-form]')
-     newListInput = document.querySelector('[data-new-list-input]')
-     console.log(newListForm)
+//Event Listeners
+document.addEventListener('DOMContentLoaded', getTodos)
+document.addEventListener('DOMContentLoaded', realtimeClock)
+todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', deleteCheck);
+filterOption.addEventListener('change', filterTodo)
 
-})
 
-console.log(newListForm)
+//functions
+function addTodo(event){
+    //prevent form form submitted
+    event.preventDefault()
 
-let lists = [ 
-{
-    id: 1 ,
-    name: '' 
-}, {
-    id:2,
-    name: 'todo'
-}]
+    //create todo Div
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add("todo");
+    
+    //create LI
+    const newTodo = document.createElement('li');
+    newTodo.innerText = todoInput.value;
+    newTodo.classList.add('todo-item');
+    todoDiv.appendChild(newTodo);
+    //Add todo to localstorage
+    saveLocalTodos(todoInput.value)
 
-newListForm.addEventListener('submit', e => {
-    e.preventDefault()
-    const listName = newListInput.nodeValue
-    if(listName == null || listName === '')return
-    const list = create(listName)
-    newListInput.value = null
-    lists.push(list)
-    render()
-})
+    //check mark button
+    const completedButton = document.createElement('button');
+    completedButton.innerHTML = '<i class="fas fa-check"></i>';
+    completedButton.classList.add("complete-btn")
+    todoDiv.appendChild(completedButton);
 
-function createList(name){
-   return {id: Date.now().toString(), name : name , tasks:[] }
+     //check delete button
+     const deleteButton = document.createElement('button');
+     deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+     deleteButton.classList.add("trash-btn")
+     todoDiv.appendChild(deleteButton);
+
+     //Append to List
+     todoList.appendChild(todoDiv)
+
+     todoInput.value = ""
+
 }
 
-document.addEventListener("DOMContentLoaded", function render(){
-    clearElement()
-    lists.forEach(list => {
-        const listElement = document.createElement('li')
-        listElement.dataset.listId = list.id
-        listElement.classList.add("list-name")
-        listElement.innerText = list.name
-        document.querySelector('[data-lists]').append(listElement)
+function deleteCheck(event){
+   const item = event.target;
+   //Deleter todo
+   if(item.classList[0] ==='trash-btn'){
+       const todo = item.parentElement;
+
+       //Animation
+       todo.classList.add('fall');
+       removeLocalTodos(todo)
+       todo.addEventListener('transitionend', function(){
+           todo.remove()
+
+       })
+   }
+
+   //check mark
+   if(item.classList[0] ==='complete-btn'){
+       const todo = item.parentElement;
+       todo.classList.toggle("completed");
+   }
+
+}
+
+function filterTodo(event){
+    const todos = todoList.childNodes;
+    console.log(event.target.value)
+    todos.forEach(function(todo){
+        if(todo.classList === undefined){
+            
+        }else{
+        switch(event.target.value){
+            case "all":
+                todo.style.display = "flex";
+                break;
+            case "completed":
+                if(todo.classList.contains("completed")){
+                    todo.style.display = "flex";
+                }else{
+                    todo.style.display = "none";
+                }
+                break;
+            case "Uncompleted":
+                if(!todo.classList.contains("completed")){
+                    todo.style.display = "flex";
+                }else{
+                    todo.style.display = "none";
+                }
+                break;
+
+        }}
     })
 }
-)
 
-function clearElement() {
+function saveLocalTodos(todo){
+    //Check --- Do I already have thing in there?
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos=[]
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
 
+function getTodos(){
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos=[]
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    
+    todos.forEach(function(todo){
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add("todo");
+        
+        //create LI
+        const newTodo = document.createElement('li');
+        newTodo.innerText = todo;
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+        //Add todo to localstorage
+    
+        //check mark button
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fas fa-check"></i>';
+        completedButton.classList.add("complete-btn")
+        todoDiv.appendChild(completedButton);
+    
+         //check delete button
+         const deleteButton = document.createElement('button');
+         deleteButton.innerHTML = '<i class="fas fa-trash"></i>';
+         deleteButton.classList.add("trash-btn")
+         todoDiv.appendChild(deleteButton);
+    
+         //Append to List
+         todoList.appendChild(todoDiv)
 
+    })
 
 }
 
+function removeLocalTodos(todo){
+    let todos;
+    if(localStorage.getItem('todos') === null){
+        todos=[]
+    }else{
+        todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    const todoIndex = todo.children[0].innerText
+    todos.splice(todos.indexOf(todoIndex), 1)
 
+    localStorage.setItem('todos', JSON.stringify(todos))
+
+}
+
+function realtimeClock(){
+    var rtClock = new Date()
+
+    var hours = rtClock.getHours();
+    var minutes = rtClock.getMinutes();
+
+    var amPm = (hours < 12 ) ? "AM" : "PM";
+
+    hours = (hours > 12) ? hours - 12 : hours;
+
+    hours = ("0" + hours).slice(-2)
+    minutes = ("0" + minutes).slice(-2)
+
+    document.getElementById('clock').innerHTML = 
+        hours + " : " + minutes + " " + amPm
+    
+    var t = setTimeout(realtimeClock, 500)
+
+}
 
 

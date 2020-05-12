@@ -1,0 +1,257 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg, rgb(223, 237, 241), rgb(24, 124, 185));
+    color: white;
+    font-family: "Poppins" , sans-serif;
+    min-height: 100vh;
+}
+
+.app{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-flow: column;
+}
+
+header,
+form{
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+
+}
+
+header{
+    min-height: 5vh;
+
+}
+
+#clock{
+    font-size: 6rem;
+    min-height: 0.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#city{
+    font-size: 2.5rem;
+    min-height: 0.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#condition{
+    font-size: 1.5rem;
+    min-height: 0.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.icons{
+    margin: 2vh;
+    font-size: 4rem;
+    min-height: 0.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#temp{
+    font-size: 2rem;
+    min-height: 0.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* 
+Search css
+*/
+
+.search_input{
+  width: 200px;
+  box-sizing: border-box;
+  border-bottom: 1px solid lightslategray;
+  font-size: 16px;
+  background: transparent;
+  background-image: url(./search.png);
+  background-position-y: 7px;
+  background-position-x: 2px;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+  color:lightslategray;
+}
+
+
+.search_input:focus{
+    width: 500px;
+    outline:0;
+}
+
+/* 
+
+todo-list css
+
+*/
+
+form input,
+form button {
+    padding: 0.5rem;
+    font-size: 2rem;
+    border:none;
+    background: white;
+    color:lightslategray;
+}
+
+form input{
+    border-radius: 40px 0px 0px 40px;
+}
+
+form input, form button:focus{
+    outline:0;
+}
+
+
+form button{
+    color:   rgb(43, 130, 184);
+    background: white;
+    cursor: pointer;
+    transition: all 0.5 ease;
+    border-radius: 0px 40px 40px 0px;
+}
+
+form button:hover {
+    background: rgb(43, 130, 184);
+    color:white;
+}
+
+.todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.todo-list{
+    width: 50%;
+    list-style: none;
+
+}
+
+.todo{
+    margin: 0.5rem;
+    background: white;
+    color: black;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s ease-out;
+    color:lightslategray;
+}
+
+.todo li{
+    flex: 1;
+}
+
+.trash-btn , .complete-btn{
+    background: lightcoral;
+    color:white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.trash-btn , .complete-btn:focus{
+    outline:0;
+}
+
+.complete-btn{
+    background: lightgreen
+}
+
+.todo-item{
+    padding: 0rem 0.5rem;
+}
+
+.fa-trash, .fa-check{
+    pointer-events: none;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select{
+    color: #ff6f47;
+    width: 8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* 
+dragging list css
+*/
+
+.lists{
+    display:flex;
+    flex:1;
+    width: 100%;
+}
+
+.lists .list{
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    width: 100%;
+    min-width: 250px;
+    max-width: 33.33vw;
+    height: 100%;
+    min-height: 100vh;
+
+    margin: 0 0.5px;
+    padding: 8px;
+    transition: all 0.2s linear;   
+}
+
+.lists .list .list-item{
+    border-radius: 8px;
+    text-align: center;
+
+}

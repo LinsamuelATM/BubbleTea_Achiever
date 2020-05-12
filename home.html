@@ -3,30 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script type="text/javascript" src="script.js"></script>
+    
+    <title>BubbleTea Achiever</title>
 </head>
 <body>
-    <div class="all-tasks">
-        <h2 class="task-list-title">My lists</h2>
-        <ul class="task-list" data-lists>
-            <!-- <li class="list-name">Youtube</li>
-            <li class="list-name">work</li>
-            <li class="list-name">Stuff</li> -->
+    <header>
+      <h1> BubbleTea_Achiever</h1>
+      <input type="checkbox" id="check">
 
-        </ul>
-  
-        <form action="" data-new-list-form>
-          <input 
-            type="text"
-            class="new list"
-            data-new-list-input
-            placeholder="new list name"
-            aria-label="new list name"
-          />
-          <button class="btn create" aria-label="create new list">+</button>
-        </form>
-      </div>
+    </header>
+
+    <header>
+        <form class="search" action = "https://www.google.com/search" method = "GET">
+          <input autocomplete="off" class="search_input"type="text" name="q" placeholder="Search . . .">
+      </form>
+    </header>
+
+    <div class="lists">
+
+        <div class="list">
+
+          </div>
+
+
+      <div class="list">
+        <!-- search bar -->  
+
+        <div class="list-item" draggable="true">
+          <!-- clock -->
+            <div id="clock">
+
+            </div>
+          </div>
+
+            <!-- weather info -->
+        <div class="list-item" draggable="true">
+            <p id="city"> </p>
+            <p id="condition"> </p>
+            <p id="weather_icon">
+                <figure class="icons">
+                    <canvas id="icon" width="64" height="64"></canvas>
+                    <p id="temp"> </p> 
+                  </figure> 
+            </p>
+          </div>
+
+
+          
+
+            <!-- todo list -->
+          
+            <div class="list-item" draggable="true">
+              <form class="input_form">
+                <input type="text" class="todo-input">
+                <button class="todo-button" type="submited">
+                  <i class="fas fa-plus-square"></i>
+                </button>
+                  <div class="select">
+                    <select name="todos" class="fliter-todo">
+                      <option value="all">All</option>
+                      <option value="completed">Completed</option>
+                      <option value="Uncompleted">Uncompleted</option>
+                    </select>
+                  </div>
+              </form>
+
+              <div class="todo-container">
+                <ul class="todo-list">
+          
+                </ul>
+              </div>
+            </div>
+        </div>
+
+          <div class="list">
+
+          </div>
+
+
+
+    </div>
 </body>
+
+
+
+<script type="text/javascript" src="skycons.js"></script>
+<script type="text/javascript" src="draggable.js"></script>
+<script type="text/javascript" src="weather.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </html>
