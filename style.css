@@ -34,7 +34,7 @@ header{
 }
 
 #clock{
-    font-size: 6rem;
+    font-size: 5rem;
     min-height: 0.5vh;
     display: flex;
     justify-content: center;
@@ -157,7 +157,7 @@ form button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
     color:lightslategray;
 }
 
@@ -196,7 +196,6 @@ form button:hover {
 }
 
 .fall{
-    transform: translateY(8rem) rotateZ(20deg);
     opacity: 0;
 }
 
@@ -216,7 +215,7 @@ select{
 
 select{
     color: #ff6f47;
-    width: 8rem;
+    width: 5vh;
     cursor: pointer;
     padding: 0.5rem;
 }

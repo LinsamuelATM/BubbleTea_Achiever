@@ -27,6 +27,7 @@ function getPositionSuccess(position) {
   Lat = position.coords.latitude;
   Lon = position.coords.longitude;
   fetchWeatherAPI(Lat, Lon)
+
 }
 
 // getCurrentPosition: Error returned
@@ -112,7 +113,6 @@ function chooseWeather_Icon(condition){
         icons.set("icon", Skycons.FOG);
         break;
   }
-  console.log(icons)
   icons.play();
 
 }
