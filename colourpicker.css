@@ -1,0 +1,41 @@
+body{
+    background: linear-gradient(120deg, rgb(223, 237, 241), rgb(24, 124, 185));
+}
+
+.box{
+    position: absolute;
+    top : 40px;
+    right: 40px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+
+}
+
+.box a{
+    width:  20px;
+    height: 20px;
+    float: left;
+    text-indent: -9999px;
+}
+
+#red{
+    background-color: #C10000;
+}
+
+#blue{
+    background-color: rgb(4, 92, 139);
+}
+
+#green{
+    background-color: #2E5511;
+}
+
+#yellow{
+    background-color:#FFC100;
+}
+
+#orange{
+    background-color: #FF7400;
+}
+

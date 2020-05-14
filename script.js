@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', getTodos)
 document.addEventListener('DOMContentLoaded', realtimeClock)
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
-filterOption.addEventListener('change', filterTodo)
+//filterOption.addEventListener('change', filterTodo)
 
 
 //functions

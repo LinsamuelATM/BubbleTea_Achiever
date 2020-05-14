@@ -77,6 +77,8 @@ header{
 
 }
 
+
+
 /* 
 Search css
 */
@@ -114,25 +116,33 @@ form button {
     padding: 0.5rem;
     font-size: 2rem;
     border:none;
-    background: white;
-    color:lightslategray;
+    background: transparent;
+    color:white;
+    border-bottom: 1px solid lightslategray;
+}
+
+form input {
+    border-bottom: 1px solid lightslategray;
 }
 
 form input, form button:focus{
     outline:0;
 }
 
+.input_form{
+    height: 13vh;
+}
+
 
 form button{
-    color:   rgb(43, 130, 184);
-    background: white;
+    color:   white;
+    background:transparent;
     cursor: pointer;
     transition: all 0.5 ease;
-    border-radius: 0px 40px 40px 0px;
 }
 
 form button:hover {
-    background: rgb(43, 130, 184);
+    background: transparent;
     color:white;
 }
 
@@ -151,14 +161,14 @@ form button:hover {
 
 .todo{
     margin: 0.5rem;
-    background: white;
+    background: transparent;
     color: black;
-    font-size: 1.5rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease-out;
-    color:lightslategray;
+    color:white;
 }
 
 .todo li{
@@ -166,21 +176,18 @@ form button:hover {
 }
 
 .trash-btn , .complete-btn{
-    background: lightcoral;
+    background: transparent;
     color:white;
     border: none;
     padding: 1rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.5rem;
 }
 
 .trash-btn , .complete-btn:focus{
     outline:0;
 }
 
-.complete-btn{
-    background: lightgreen
-}
 
 .todo-item{
     padding: 0rem 0.5rem;
@@ -205,6 +212,7 @@ select{
     appearance: none;
     outline: none;
     border: none;
+    background: transparent;
 }
 
 .select{

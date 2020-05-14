@@ -15,7 +15,10 @@ var Lon = '';
 
 document.addEventListener('DOMContentLoaded', getLocation)
 
+
+
 function getLocation() {
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPositionSuccess ,getPosErr);
   } else { 
@@ -49,12 +52,11 @@ function getPosErr(err) {
 
 function fetchWeatherAPI(geoLat , geoLon){
   var URLRequest = 'http://api.openweathermap.org/data/2.5/weather?lat='+ geoLat + '&lon='+ geoLon + '&appid=' + API_KEY
-
   fetch(URLRequest)
   .then(response => response.json())
   .then(data => {
 
-
+ 
     current_City = data.name;
     weather_condition = data.weather[0].description;
     temp = Math.trunc(data.main.temp - 273.15) + "C";

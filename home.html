@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./colourpicker.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>BubbleTea Achiever</title>
@@ -22,6 +23,14 @@
           <input autocomplete="off" class="search_input"type="text" name="q" placeholder="Search . . .">
       </form>
     </header>
+
+    <div class="box">
+        <a id="red">#C10000</a>
+        <a id="orange">#FF7400</a>
+        <a id="yellow">#FFC100</a>
+        <a id="green">#2E5511</a>
+        <a id="blue">#0082C8</a>
+    </div>
 
     <div class="lists">
 
@@ -61,13 +70,16 @@
                 <button class="todo-button" type="submited">
                   <i class="fas fa-plus-square"></i>
                 </button>
-                  <div class="select">
+
+                <!--
+                   <div class="select">
                     <select name="todos" class="fliter-todo">
                       <option value="all">All</option>
                       <option value="completed">Completed</option>
                       <option value="Uncompleted">Uncompleted</option>
                     </select>
                   </div>
+                  -->
               </form>
 
               <div class="todo-container">
@@ -80,7 +92,7 @@
 
 
 
-        
+
 
           <div class="list" id="list-3">
 
@@ -92,7 +104,7 @@
 </body>
 
 
-
+<script type="text/javascript" src="colourpicker.js"></script>
 <script type="text/javascript" src="skycons.js"></script>
 <script type="text/javascript" src="draggable.js"></script>
 <script type="text/javascript" src="weather.js"></script>
