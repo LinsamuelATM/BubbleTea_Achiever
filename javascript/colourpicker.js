@@ -31,8 +31,8 @@ yellow.addEventListener('click', function(){
 })
 
 green.addEventListener('click', function(){
-    document.body.style.background = 'linear-gradient(120deg, rgb(211, 238, 193), rgb(83, 172, 31))'
-    green_gradient = 'linear-gradient(120deg, rgb(211, 238, 193), rgb(83, 172, 31))'
+    document.body.style.background = 'linear-gradient(120deg, rgb(211, 238, 193), rgb(67, 139, 25)'
+    green_gradient = 'linear-gradient(120deg, rgb(211, 238, 193), rgb(67, 139, 25)'
     saveColour(green_gradient)
 })
 

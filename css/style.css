@@ -9,6 +9,8 @@ body{
     color: white;
     font-family: "Poppins" , sans-serif;
     min-height: 100vh;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .app{
@@ -89,7 +91,7 @@ Search css
   border-bottom: 1px solid lightslategray;
   font-size: 16px;
   background: transparent;
-  background-image: url(./search.png);
+  background-image: url(../images/search.png);
   background-position-y: 7px;
   background-position-x: 2px;
   background-size: 30px;
@@ -114,15 +116,15 @@ todo-list css
 form input,
 form button {
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border:none;
     background: transparent;
     color:white;
-    border-bottom: 1px solid lightslategray;
+    border-bottom: 1px solid white;
 }
 
 form input {
-    border-bottom: 1px solid lightslategray;
+    border-bottom: 1px solid white;
 }
 
 form input, form button:focus{

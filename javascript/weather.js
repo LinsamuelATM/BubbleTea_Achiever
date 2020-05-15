@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', getLocation)
 
 
 
+
 function getLocation() {
 
   if (navigator.geolocation) {
@@ -56,7 +57,7 @@ function fetchWeatherAPI(geoLat , geoLon){
   .then(response => response.json())
   .then(data => {
 
- 
+    console.log('fetched')
     current_City = data.name;
     weather_condition = data.weather[0].description;
     temp = Math.trunc(data.main.temp - 273.15) + "C";
