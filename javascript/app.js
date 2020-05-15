@@ -1,7 +1,12 @@
+//particle background animation 
+// adjust attributes here ----!!!
+// Do not change anything in particles.js 
+
+
 particlesJS("particles-js" , {
     "particles": {
       "number": {
-        "value": 71,
+        "value": 100,
         "density": {
           "enable": true,
           "value_area": 1843.9238699953512
@@ -55,7 +60,7 @@ particlesJS("particles-js" , {
       "move": {
         "enable": true,
         "speed": 6,
-        "direction": "none",
+        "direction": "top-right",
         "random": false,
         "straight": false,
         "out_mode": "out",

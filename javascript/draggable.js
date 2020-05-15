@@ -18,7 +18,7 @@ var virtual_list3;
 
 
 
-
+// Creating a local storage "list_One" for first time users
 if(localStorage.getItem('list_One') === null){
         virtual_list1=[]
         localStorage.setItem('list_One', JSON.stringify(virtual_list1))
@@ -27,6 +27,7 @@ if(localStorage.getItem('list_One') === null){
         
 }
 
+// Creating a local storage "list_Two" for first time users
 if(localStorage.getItem('list_Two') === null){
     virtual_list2=['clock', 'item2' , 'item3']
     localStorage.setItem('list_Two', JSON.stringify(virtual_list2))
@@ -35,6 +36,7 @@ if(localStorage.getItem('list_Two') === null){
   
 }
 
+// Creating a local storage "list_Three" for first time users
 if(localStorage.getItem('list_Three') === null){
     virtual_list3=[]
     localStorage.setItem('list_Three', JSON.stringify(virtual_list3))
@@ -43,6 +45,9 @@ if(localStorage.getItem('list_Three') === null){
  
 }
 
+
+
+//When application starts go through the local storage append the items in 'list-One' to the actual list_1
 if(virtual_list1.length > 0){
     for( let i = 0; i < virtual_list1.length ; i++){
         switch(virtual_list1[i]){
@@ -60,6 +65,7 @@ if(virtual_list1.length > 0){
     }
 }
 
+//When application starts go through the local storage append the items in 'list-Two' to the actual list_2
 if(virtual_list2.length > 0){
     for( let i = 0; i < virtual_list2.length ; i++){
         switch(virtual_list2[i]){
@@ -77,6 +83,7 @@ if(virtual_list2.length > 0){
     }
 }
 
+//When application starts go through the local storage append the items in 'list-Three' to the actual list_3
 if(virtual_list3.length > 0){
     for( let i = 0; i < virtual_list3.length ; i++){
         switch(virtual_list3[i]){
@@ -101,9 +108,10 @@ if(virtual_list3.length > 0){
 
 
 
-let draggedItem = null;
+let draggedItem = null; // item being dragged during customization
 
 
+//edit button
 button.addEventListener('change' , function(){
 
     if(button.checked){
@@ -119,7 +127,7 @@ button.addEventListener('change' , function(){
                
                 var listid = item.parentElement.id
                 var itemid = this.id
-                removeLocalList(itemid , listid)
+                removeLocalList(itemid , listid)  // if item is dragged we remove it from the local storage
             }
         })
     
@@ -131,7 +139,7 @@ button.addEventListener('change' , function(){
               
                 var listid = item.parentElement.id
                 var itemid = this.id
-                saveLocalList(itemid, listid)
+                saveLocalList(itemid, listid)  // if item is dropped we save it into to the local storage
                 
             }
         })
@@ -139,8 +147,6 @@ button.addEventListener('change' , function(){
     
         for(let j = 0; j<lists.length; j++){
             const list = lists[j];
-
-            var leavinglist; 
     
             list.addEventListener('dragover', function(e){
                 if(button.checked){
@@ -152,21 +158,21 @@ button.addEventListener('change' , function(){
             list.addEventListener('dragenter', function(e){
                 if(button.checked){
                 e.preventDefault();
-                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0.2)'}
+                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0.2)'}  // sets background when an item is dragged over the list
             });
     
             list.addEventListener('dragleave', function(e){
                 if(button.checked){
                 e.preventDefault();
                 leavinglist = this.id
-                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0)';
+                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0)';  // change background back to the orginal when an item leaves the list
             }
             });
     
             list.addEventListener('drop', function(e){
                 if(button.checked){
                 this.append(draggedItem)
-                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0)';
+                this.style.backgroundColor = 'rgba(0, 0 , 0 , 0)';  // sets background when an item is dragged over when an item is dropped in the list
                 }
             })
         }
@@ -176,8 +182,11 @@ button.addEventListener('change' , function(){
 })
 
 
+
+//saves the item into the local storage
 function saveLocalList(item_id , list_id){
 
+    //depending on which list it is added to we add it to our virtual list and set it to the local storage
     switch(list_id){
         case 'list-1':
             
@@ -210,6 +219,7 @@ function saveLocalList(item_id , list_id){
 
 }
 
+ //depending on which list it is removing from to we remove it from our virtual list and set it to the local storage
 function removeLocalList(item_id , list_id){
    
     switch(list_id){
@@ -244,6 +254,8 @@ function removeLocalList(item_id , list_id){
     }
 }
 
+
+//remove duplicates from the arrays
 function removeDuplicates(array){
     return array.filter((a, b) => array.indexOf(a) === b)
 }

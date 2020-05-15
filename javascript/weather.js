@@ -13,26 +13,45 @@ var Lat = '';
 var Lon = '';
 
 
+
 document.addEventListener('DOMContentLoaded', getLocation)
 
 
 
-
+//fetching the geolocation: Lat and Lon
 function getLocation() {
 
+  /*
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPositionSuccess ,getPosErr);
   } else { 
     city.innerHTML = "Geolocation is not supported by this browser.";
   }
+  */
+
+  var URLRequest = 'http://ip-api.com/json/'
+  fetch(URLRequest)
+  .then(response => response.json())
+  .then(data =>{
+    console.log('location fetched')
+    Lat = data.lat;
+    Lon = data.lon;
+    fetchWeatherAPI(Lat, Lon)
+  }).catch(error => {
+    console.log(error)
+})
 }
 
+/*
 function getPositionSuccess(position) {
   Lat = position.coords.latitude;
   Lon = position.coords.longitude;
+  localStorage.setItem('Lat', JSON.stringify(Lat))
+  localStorage.setItem('Lon', JSON.stringify(Lon))
   fetchWeatherAPI(Lat, Lon)
 
 }
+*/
 
 // getCurrentPosition: Error returned
 function getPosErr(err) {
@@ -51,6 +70,8 @@ function getPosErr(err) {
   }
 }
 
+
+//Fetching weather API with params lat and lon 
 function fetchWeatherAPI(geoLat , geoLon){
   var URLRequest = 'http://api.openweathermap.org/data/2.5/weather?lat='+ geoLat + '&lon='+ geoLon + '&appid=' + API_KEY
   fetch(URLRequest)
@@ -76,9 +97,11 @@ function fetchWeatherAPI(geoLat , geoLon){
 }
 
 
-
+//Chooses which weather icon to display depending on the weather condition 
 function chooseWeather_Icon(condition){
-  var icons = new Skycons({"color": "white"});
+  var icons = new Skycons({"color": "white"});  // setting the colour of icons to white
+
+  // Using date to determine daytime or night time icon
   var date = new Date()
   var time = date.getHours();
 

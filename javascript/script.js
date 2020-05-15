@@ -4,6 +4,7 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList= document.querySelector('.todo-list');
 const filterOption = document.querySelector('.fliter-todo')
+const todo_input = document.querySelector('.todo-input')
 
 
 //Event Listeners
@@ -11,7 +12,21 @@ document.addEventListener('DOMContentLoaded', getTodos)
 document.addEventListener('DOMContentLoaded', realtimeClock)
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
+todoInput.addEventListener('keyup', stoppedTyping)
 //filterOption.addEventListener('change', filterTodo)
+
+
+//disables the button of the input value of todo-input is empty
+function stoppedTyping(){
+    console.log(this.value.length)
+    if(this.value.length > 0) { 
+       
+        document.querySelector('.todo-button').disabled = false; 
+    } else { 
+
+        document.querySelector('.todo-button').disabled = true;
+    }
+}
 
 
 //functions
@@ -50,6 +65,8 @@ function addTodo(event){
 
 }
 
+
+//deletion of an todo item
 function deleteCheck(event){
    const item = event.target;
    //Deleter todo
@@ -73,6 +90,7 @@ function deleteCheck(event){
 
 }
 
+//filtering the todos (currently not in use)
 function filterTodo(event){
     const todos = todoList.childNodes;
     console.log(event.target.value)
@@ -103,6 +121,8 @@ function filterTodo(event){
     })
 }
 
+
+//saving the todos in the local storage once added to the list 
 function saveLocalTodos(todo){
     //Check --- Do I already have thing in there?
     let todos;
@@ -153,6 +173,8 @@ function getTodos(){
 
 }
 
+
+//removing the todo-items once deleted from the todo-list
 function removeLocalTodos(todo){
     let todos;
     if(localStorage.getItem('todos') === null){
@@ -167,6 +189,8 @@ function removeLocalTodos(todo){
 
 }
 
+
+//sets up the current time for the user
 function realtimeClock(){
     var rtClock = new Date()
 

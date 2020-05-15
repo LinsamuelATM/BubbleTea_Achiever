@@ -88,7 +88,7 @@ Search css
 .search_input{
   width: 200px;
   box-sizing: border-box;
-  border-bottom: 1px solid lightslategray;
+  border-bottom: 1px solid black;
   font-size: 16px;
   background: transparent;
   background-image: url(../images/search.png);
@@ -98,7 +98,7 @@ Search css
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
   transition: width 0.4s ease-in-out;
-  color:lightslategray;
+  color:black;
 }
 
 

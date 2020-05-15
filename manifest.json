@@ -2,8 +2,9 @@
     "name": "BubbleTeaAchiever",
     "version": "1.0",
     "description": "An extension that helps people track their daily goals",
-    "permissions": ["storage", "<all_urls>"],
+    "permissions": ["activeTab", "declarativeContent", "storage"],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "chrome_url_overrides" : {  "newtab": "home.html"},
     "background": {
         "scripts": ["background.js" ],
         "persistent": false

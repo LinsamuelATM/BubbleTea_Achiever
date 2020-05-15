@@ -4,15 +4,19 @@ const yellow = document.querySelector("#yellow")
 const green = document.querySelector("#green")
 const blue = document.querySelector("#blue")
 
-var current_colour; 
+var current_colour; // current colour selected 
+
+current_colour = JSON.parse(localStorage.getItem('background_colour')) //get the current colour from the local storage
+
+document.body.style.background = current_colour; // set the current colour for display
 
 
 
-current_colour = JSON.parse(localStorage.getItem('background_colour'))
-
-document.body.style.background = current_colour;
+//Each colour in the colour picker is added an event.
+//When clicked the colour of the background would change and saved to local storage
 
 red.addEventListener('click', function(){
+
     document.body.style.background = 'linear-gradient(120deg, rgb(243, 203, 198), rgb(192, 58, 46))'
     red_gradient = 'linear-gradient(120deg, rgb(243, 203, 198), rgb(192, 58, 46))';
     saveColour(red_gradient)
@@ -42,6 +46,8 @@ blue.addEventListener('click', function(){
     saveColour(blue_gradient)
 })
 
+
+//saves the colour picked to the local storage
 function saveColour(colour_picked){
     localStorage.setItem('background_colour', JSON.stringify(colour_picked));
 
