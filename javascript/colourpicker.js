@@ -10,8 +10,6 @@ current_colour = JSON.parse(localStorage.getItem('background_colour')) //get the
 
 document.body.style.background = current_colour; // set the current colour for display
 
-
-
 //Each colour in the colour picker is added an event.
 //When clicked the colour of the background would change and saved to local storage
 
