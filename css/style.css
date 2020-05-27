@@ -137,7 +137,7 @@ form input, form button:focus{
 
 
 form button{
-    color:   white;
+    color: white;
     background:transparent;
     cursor: pointer;
     transition: all 0.5 ease;
@@ -258,26 +258,4 @@ dragging list css
     border-radius: 8px;
     text-align: center;
 
-}
-
-.qa-container .qa-list {
-    min-height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.5rem;
-    background: transparent;
-    cursor: pointer;
-    transition: 0.4s ease-in-out;
-    float: left;
-
-}
-
-.qa-container a.qa-item {
-    padding: 1.5rem;
-    font-size: 0.5rem;
-    border:none;
-    display: inline-flex;
-    background: transparent;
-    background-size: cover;
 }

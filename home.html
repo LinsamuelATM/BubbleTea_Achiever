@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/colourpicker.css">
     <link rel="stylesheet" href="./css/particles.css">
+    <link rel="stylesheet" href="./css/quickaccess.css">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>BubbleTea Achiever</title>
@@ -51,21 +53,25 @@
       <!-- list One -->
       <div class="list" id="list-1">
         <!-- quick access bar -->
-        <div class="list-item" id="qa" draggable="true">
+        <div class="list-item" id="qaBar" draggable="true">
           <div class="qa-container"> 
-            <ul class="qa-list"> 
-            </ul>
+                <nav class="qa-list" style="font-size:100%;">
+                  </nav>
+            <!-- button to add new quick access link -->
             <button class="qa-button" type="submit">
-                <i class="fa fa-plus"></i>
+              <i class="fa fa-plus"></i>
             </button>
           </div>
 
           <!-- form for adding quick access links -->
-          <form class="qa-form" style="visibility: collapse;">
-              <input type="text" class="qa-input" autocomplete="off">
-              <button class="qa-input-button" type="submit">
-                  Add shortcut
-              </button>
+          <form class="qa-form" style="display: none;">
+            <div class="qa-form-inputs">
+              <input title="title" type="text" class="qa-title placeholder-shown" placeholder="Title" autocomplete="on">
+              <input title="URL" type="text" class="qa-href" autocomplete="off">
+            </div>
+            <button class="qa-add-button" type="submit">
+              <i class="fas fa-plus-square"></i>
+            </button>
           </form>
         </div>
       </div>
@@ -77,10 +83,9 @@
 
         <!-- clock -->    
         <div class="list-item" id="clock"  draggable="true">
+        </div>
 
-          </div>
-
-            <!-- weather info -->
+        <!-- weather info -->
         <div class="list-item" id= "item2" draggable="true">
             <p id="city"> </p>
             <p id="condition"> </p>
@@ -90,46 +95,38 @@
                     <p id="temp"> </p> 
                   </figure> 
             </p>
-          </div>
-
-
-          
-
-            <!-- todo list -->
-          
-            <div class="list-item" id = "item3"  draggable="true">
-              <form class="input_form">
-                <input type="text" class="todo-input">
-                <button class="todo-button" type="submit" disabled = true>
-                  <i class="fas fa-plus-square"></i>
-                </button>
-
-                <!--
-                   <div class="select">
-                    <select name="todos" class="fliter-todo">
-                      <option value="all">All</option>
-                      <option value="completed">Completed</option>
-                      <option value="Uncompleted">Uncompleted</option>
-                    </select>
-                  </div>
-                  -->
-              </form>
-
-              <div class="todo-container">
-                <ul class="todo-list">
-          
-                </ul>
-              </div>
-            </div>
         </div>
 
+        <!-- todo list -->
+        <div class="list-item" id = "item3"  draggable="true">
+          <form class="input_form">
+            <input type="text" class="todo-input">
+            <button class="todo-button" type="submit" disabled = true>
+              <i class="fas fa-plus-square"></i>
+            </button>
 
-
-
-          <!-- list Three-->
-          <div class="list" id="list-3">
-
+            <!--
+                <div class="select">
+                <select name="todos" class="fliter-todo">
+                  <option value="all">All</option>
+                  <option value="completed">Completed</option>
+                  <option value="Uncompleted">Uncompleted</option>
+                </select>
+              </div>
+              -->
+          </form>
+          <div class="todo-container">
+            <ul class="todo-list">
+      
+            </ul>
           </div>
+        </div>
+      </div>
+
+      <!-- list Three-->
+      <div class="list" id="list-3">
+
+      </div>
 
 
 

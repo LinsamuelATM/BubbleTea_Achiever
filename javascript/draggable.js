@@ -4,7 +4,7 @@ const button = document.querySelector('#check')
 const clock = document.querySelector('#clock')
 const weather = document.querySelector('#item2')
 const todo_list = document.querySelector('#item3')
-const qa_bar = document.querySelector('#qa')
+const qa_bar = document.querySelector('#qaBar')
 
 var list_1 = lists[0]; //actual list 1
 var list_2 = lists[1]; //actual list 2
@@ -16,7 +16,7 @@ var virtual_list3;
 
 // Creating a local storage "list_One" for first time users
 if(localStorage.getItem('list_One') === null){
-        virtual_list1=['qa']
+        virtual_list1=['qaBar']
         localStorage.setItem('list_One', JSON.stringify(virtual_list1))
     }else{
         virtual_list1 = JSON.parse(localStorage.getItem('list_One'))
@@ -56,8 +56,8 @@ if(virtual_list1.length > 0){
             case "item3":
                 list_1.append(item3)
                 break;
-            case "qa":
-                list_1.append(qa)
+            case "qaBar":
+                list_1.append(qaBar)
                 break;
         }
     }
@@ -76,8 +76,8 @@ if(virtual_list2.length > 0){
             case "item3":
                 list_2.append(item3)
                 break;
-            case "qa":
-                list_2.append(qa)
+            case "qaBar":
+                list_2.append(qaBar)
                 break;
         }
     }
@@ -96,8 +96,8 @@ if(virtual_list3.length > 0){
             case "item3":
                 list_3.append(item3)
                 break;
-            case "qa":
-                list_1.append(qa)
+            case "qaBar":
+                list_1.append(qaBar)
                 break;
         }
     }
