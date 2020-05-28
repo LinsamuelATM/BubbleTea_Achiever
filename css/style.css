@@ -8,6 +8,7 @@ body{
     background-image: linear-gradient(120deg, rgb(223, 237, 241), rgb(24, 124, 185));
     color: white;
     font-family: "Poppins" , sans-serif;
+    font-weight: lighter;
     min-height: 100vh;
     overflow-y: hidden; /* Hide vertical scrollbar */
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -27,6 +28,7 @@ form{
     justify-content: center;
     align-items: center;
     font-size: 0.5rem;
+    font-weight: lighter;
 
 }
 
@@ -41,6 +43,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 #city{

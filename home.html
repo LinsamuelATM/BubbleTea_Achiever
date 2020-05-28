@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/colourpicker.css">
     <link rel="stylesheet" href="./css/particles.css">
+    <link rel="stylesheet" href='./css/bubbletea.css'>
+    <link rel="stylesheet" href="./css/timer.css">
+    <link rel="stylesheet" href="./css/quickaccess.css">
+
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>BubbleTea Achiever</title>
@@ -21,9 +26,35 @@
 
       <!-- BubbleTea_Ahiever header and edit checkbox -->
       <h1> BubbleTea_Achiever</h1>
-      <input type="checkbox" id="check">
+     
 
     </header>
+
+    <div id="edit">
+           <p>    Edit
+              <input type="checkbox" id="check">
+           </p> 
+    </div>
+
+    <button class="open-button">Create count_down</button>
+
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+        
+             <div>
+                  <p> Event Name</p>
+                  <input type="text" class="count_down_input"id="event_input" autocomplete="off">
+                  <p> Day</p>
+                  <input type="text" class="count_down_input" id="day_input" autocomplete="off">
+                  <p> Month </p>
+                  <input type="text" class="count_down_input" id="month_input" autocomplete="off">
+                  <p> Year </p>
+                  <input type="text" class="count_down_input"id="year_input" autocomplete="off">
+
+                  <button type="button" id="count_down_create"> Create</button>
+             </div>
+        </form>
+      </div>
 
      <!-- Search bar -->
     <header>
@@ -51,7 +82,30 @@
       <!-- list One -->
         <div class="list" id="list-1">
 
+              <!-- quick access bar -->
+        <div class="list-item" id="qaBar" draggable="true">
+            <div class="qa-container"> 
+                  <nav class="qa-list" style="font-size:100%;">
+                    </nav>
+              <!-- button to add new quick access link -->
+              <button class="qa-button" type="submit">
+                <i class="fa fa-plus"></i>
+              </button>
+            </div>
+  
+            <!-- form for adding quick access links -->
+            <form class="qa-form" style="display: none;">
+              <div class="qa-form-inputs">
+                <input title="title" type="text" class="qa-title placeholder-shown" placeholder="Title" autocomplete="on">
+                <input title="URL" type="text" class="qa-href" autocomplete="off">
+              </div>
+              <button class="qa-add-button" type="submit">
+                <i class="fas fa-plus-square"></i>
+              </button>
+            </form>
           </div>
+
+        </div>
 
 
       <!-- list Two  -->
@@ -75,8 +129,7 @@
             </p>
           </div>
 
-
-          
+        
 
             <!-- todo list -->
           
@@ -104,6 +157,8 @@
                 </ul>
               </div>
             </div>
+
+
         </div>
 
 
@@ -111,6 +166,44 @@
 
           <!-- list Three-->
           <div class="list" id="list-3">
+              <div class="list-item" id="timer" draggable="true">
+
+
+                  <ul class="display-container">
+
+                      <li class="note-display" >
+                          <div class="circle">
+                            <svg width="200" height="200" class="circle__svg">
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                            </svg>
+                      
+                            <div class="percent">
+                              <span class="percent__int">0.</span>
+                              <span class="percent__dec">days</span>
+                            </div>
+                          </div>
+                      
+                          <span class="label"> New years</span>
+                        </li>
+
+                        <li class="note-display">
+                            <div class="circle">
+                              <svg width="200" height="200" class="circle__svg">
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                              </svg>
+                        
+                              <div class="percent">
+                                <span class="percent__int">0.</span>
+                                <span class="percent__dec">days</span>
+                              </div>
+                            </div>
+                        
+                            <span class="label"> Christmas </span>
+                          </li>
+                  </ul>
+              </div>
 
           </div>
 
@@ -127,5 +220,7 @@
 <script type="text/javascript" src="./javascript//weather.js"></script>
 <script type="text/javascript" src="./javascript/script.js"></script>
 <script type="text/javascript" src='./javascript/particles.js'></script>
+<script type="text/javascript" src='./javascript/quickaccess.js'></script>
 <script type="text/javascript" src='./javascript/app.js'></script>
+<script src="./javascript/timer.js"></script>
 </html>

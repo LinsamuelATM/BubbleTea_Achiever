@@ -6,6 +6,9 @@ const button = document.querySelector('#check')
 const clock = document.querySelector('#clock')
 const weather = document.querySelector('#item2')
 const todo_list = document.querySelector('#item3')
+const qa_bar = document.querySelector('#qaBar')
+const timer = document.querySelector('#timer')
+
 
 
 var list_1 = lists[0]; //actual list 1
@@ -20,7 +23,7 @@ var virtual_list3;
 
 // Creating a local storage "list_One" for first time users
 if(localStorage.getItem('list_One') === null){
-        virtual_list1=[]
+        virtual_list1=['qaBar']
         localStorage.setItem('list_One', JSON.stringify(virtual_list1))
     }else{
         virtual_list1 = JSON.parse(localStorage.getItem('list_One'))
@@ -38,7 +41,7 @@ if(localStorage.getItem('list_Two') === null){
 
 // Creating a local storage "list_Three" for first time users
 if(localStorage.getItem('list_Three') === null){
-    virtual_list3=[]
+    virtual_list3=['timer']
     localStorage.setItem('list_Three', JSON.stringify(virtual_list3))
 }else{
     virtual_list3 = JSON.parse(localStorage.getItem('list_Three'))
@@ -60,6 +63,12 @@ if(virtual_list1.length > 0){
             case "item3":
                 list_1.append(item3)
                 break;
+            case "qaBar":
+                list_1.append(qa_bar)
+                break;
+            case "timer":
+                list_1.append(timer)
+                break;
 
         }
     }
@@ -78,7 +87,12 @@ if(virtual_list2.length > 0){
             case "item3":
                 list_2.append(item3)
                 break;
-
+            case "qaBar":
+                list_2.append(qa_bar)
+                break;
+            case "timer":
+                list_2.append(timer)
+                break;
         }
     }
 }
@@ -91,12 +105,16 @@ if(virtual_list3.length > 0){
                 list_3.append(clock)
                 break;
             case "item2":
-               
                 list_3.append(item2)
                 break;
             case "item3":
-                
                 list_3.append(item3)
+                break;
+            case "qaBar":
+                list_3.append(qa_bar)
+                break;
+            case "timer":
+                list_3.append(timer)
                 break;
 
         }

@@ -1,0 +1,654 @@
+@charset "UTF-8";
+/* Stackicons-Social CSS Construction Kit v1.0 | MIT License | <http://stackicons.com> 
+   Copyright (c) 2014 by Parker Bennett @parkerbennett @stackicons */
+/* FONTS */
+/* Stackicons-Social (Standard) */
+@font-face {
+  font-family: "Stackicons-Social";
+  src: url("../fonts/Stackicons/Stackicons-Social.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Stackicons/Stackicons-Social.eot?#iefix") format("embedded-opentype"), url("../fonts/Stackicons/Stackicons-Social.woff") format("woff"), url("../fonts/Stackicons/Stackicons-Social.ttf") format("truetype"), url("../fonts/Stackicons/Stackicons-Social.svg#76cc4077294aa89eeb6c5fa684bb9048") format("svg");
+  /* Legacy iOS */
+  font-style: normal !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  speak: none;
+}
+/* =============================================================================
+ *     STACKICONS-SOCIAL - BRAND COLOR VARIABLES (2014)  http://stackicons.com
+ *     v1.13 - February 3, 2014
+ * ============================================================================= 
+ */
+.st-embossed {
+  text-shadow: 0 -1px 0 #bbbbbb, 0 1px 0 white;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.263), 0 -1px 1px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.st-raised {
+  text-shadow: 0 1px 0 #bbbbbb, 0 -1px 0 white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.263), 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.st-dropshadow {
+  text-shadow: 0 1px 1px #999999;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.395);
+}
+
+.st-glow {
+  text-shadow: 0 0 1px white;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.67);
+}
+
+.st-glowshadow {
+  text-shadow: 0 0 1px #777777;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.528);
+}
+
+/* =================================================================
+ *     STACKICONS-SOCIAL - UNICODE CHARACTER MAPPING  
+ *     http://stackicons.com/scss/_unicodes-stackicons-social.scss
+ * =================================================================
+ */
+.st-embossed {
+  text-shadow: 0 -1px 0 #bbbbbb, 0 1px 0 white;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.263), 0 -1px 1px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.st-raised {
+  text-shadow: 0 1px 0 #bbbbbb, 0 -1px 0 white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.263), 0 1px 1px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.st-dropshadow {
+  text-shadow: 0 1px 1px #999999;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.395);
+}
+
+.st-glow {
+  text-shadow: 0 0 1px white;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.67);
+}
+
+.st-glowshadow {
+  text-shadow: 0 0 1px #777777;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.528);
+}
+
+/* default is a horizontal button row, using
+   inline-block vs float to make positioning
+   to the right easier using text-align */
+.st-icon, [class^=st-icon-] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  /* child elements absolute */
+  position: relative;
+  /* remove inline-block white-space */
+  margin: 0 -0.16em 0 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* padding isn't used for icons since
+     pseudo elements use position:absolute
+     and box-sizing:border-box collapses
+     size, but we need it here for text */
+  padding: 0.214em;
+  /* icons at 2400 but 2048 = 1em, so ratio = 1.171875 */
+  height: 1.599875em;
+  width: 1.599875em;
+  font-size: 1.815em;
+  /* btn or icon only - text hidden */
+  text-align: left;
+  text-indent: -9999px;
+  /* ie7 inline-block hack */
+  zoom: 1;
+  *display: inline;
+}
+
+/* for vertical lists with text */
+.nav-list {
+  font-size: 62.5%;
+}
+
+.nav-list .st-icon, .nav-list [class^=st-icon-] {
+  display: block;
+  height: auto;
+  min-height: 1.599875em;
+  line-height: 1.3;
+  width: auto;
+  margin-left: -0.214em;
+  padding-left: 1.759875em;
+  text-indent: 0;
+}
+
+.st-shape-icon.nav-list .st-icon,
+.st-shape-icon.nav-list [class^=st-icon-],
+.st-shape-rounded5.nav-list .st-icon,
+.st-shape-rounded5.nav-list [class^=st-icon-],
+.st-shape-r5.nav-list .st-icon,
+.st-shape-r5.nav-list [class^=st-icon-] {
+  padding-left: 1.679875em;
+}
+
+.nav-list-tighter {
+  margin-bottom: -0.1em;
+}
+
+.nav-list a {
+  color: #666;
+}
+.nav-list a:hover, .nav-list a:focus {
+  color: #333;
+}
+.nav-list a:active {
+  color: #000;
+}
+
+/* Icons use position: absolute to stack.
+   Pseudo-elements display icons so they don't
+   render in unstyled html. Extra <span> needed
+   in markup to stack more than two elements.
+
+   <b> and <i> reserved for button styling --
+   bevels, and inline-border.
+
+   Remember, these are child elements so they
+   will inherit, and cascade em units from
+   span, b, and i.
+*/
+.st-icon:before,
+.st-icon:after,
+.st-icon span:before,
+.st-icon span:after,
+.st-icon b:before,
+.st-icon b:after,
+.st-icon i:before,
+.st-icon i:after,
+[class^=st-icon-]:before,
+[class^=st-icon-]:after,
+[class^=st-icon-] span:before,
+[class^=st-icon-] span:after,
+[class^=st-icon-] b:before,
+[class^=st-icon-] b:after,
+[class^=st-icon-] i:before,
+[class^=st-icon-] i:after {
+  /* transition */
+  -webkit-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -moz-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -o-transition: color 0.2s ease-out, background 0.2s ease-out;
+  -ms-transition: color 0.2s ease-out, background 0.2s ease-out;
+  transition: color 0.2s ease-out, background 0.2s ease-out;
+  display: block;
+  position: absolute;
+  white-space: normal;
+  top: 0.184em;
+  left: 0.214em;
+  text-indent: 0;
+  font-size: 1em;
+  font-family: "Stackicons-Social";
+  font-weight: 400 !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  /* screenreaders */
+  speak: none;
+}
+
+.nav-left, .nav-center {
+  margin-left: -0.214em;
+}
+
+.nav-right {
+  margin-right: -0.214em;
+}
+
+.text-left, .nav-left {
+  text-align: left;
+}
+
+.text-right, .nav-right {
+  text-align: right;
+}
+
+.text-center, .nav-center {
+  text-align: center;
+}
+
+.text-justify, .nav-justify {
+  text-align: justify;
+}
+
+.st-icon:before,
+[class^=st-icon-]:before {
+  color: white;
+  color: white;
+}
+
+.st-icon:hover:before,
+[class^=st-icon-]:hover:before,
+.st-icon:focus:before,
+[class^=st-icon-]:focus:before {
+  color: #f4f2f2;
+  color: #f4f2f2;
+}
+
+.raise-on-hover .st-icon:focus,
+.raise-on-hover .st-icon:hover,
+.raise-on-hover.st-icon:focus,
+.raise-on-hover.st-icon:hover,
+[class^=st-icon-].raise-on-hover:focus,
+[class^=st-icon-].raise-on-hover:hover,
+[class^=st-icon-].raise-on-hover:focus,
+[class^=st-icon-].raise-on-hover:hover {
+  top: -1px;
+}
+
+.raise-on-hover .st-icon:active,
+.raise-on-hover.st-icon:active,
+[class^=st-icon-].raise-on-hover:active,
+[class^=st-icon-].raise-on-hover:active {
+  top: 0px;
+}
+
+.raise-on-hover .st-icon:active:before,
+.raise-on-hover.st-icon:active:before,
+.raise-on-hover [class^=st-icon-]:active:before,
+[class^=st-icon-].raise-on-hover:active:before {
+  text-shadow: none;
+}
+
+.st-icon-addthis:before {
+  content: "";
+}
+
+.st-icon-adn:before {
+  content: "";
+}
+
+.st-icon-amazon:before {
+  content: "";
+}
+
+.st-icon-amazon2:before {
+  content: "";
+}
+
+.st-icon-android:before {
+  content: "";
+}
+
+.st-icon-apple:before {
+  content: "";
+}
+
+.st-icon-behance:before {
+  content: "";
+}
+
+.st-icon-blogger:before {
+  content: "";
+}
+
+.st-icon-codepen:before {
+  content: "";
+}
+
+.st-icon-delicious:before {
+  content: "";
+}
+
+.st-icon-deviantart:before {
+  content: "";
+}
+
+.st-icon-digg:before {
+  content: "";
+}
+
+.st-icon-dribbble:before {
+  content: "";
+}
+
+.st-icon-dribbble-alt:before {
+  content: "";
+}
+
+.st-icon-dropbox:before {
+  content: "";
+}
+
+.st-icon-ebay:before {
+  content: "";
+}
+
+.st-icon-email:before {
+  content: "";
+}
+
+.st-icon-email2:before {
+  content: "";
+}
+
+.st-icon-evernote:before {
+  content: "";
+}
+
+.st-icon-facebook:before {
+  content: "";
+}
+
+.st-icon-facebook-alt:before {
+  content: "";
+}
+
+.st-icon-flattr:before {
+  content: "";
+}
+
+.st-icon-flickr:before {
+  content: "";
+}
+
+.st-icon-forrst:before {
+  content: "";
+}
+
+.st-icon-foursquare:before {
+  content: "";
+}
+
+.st-icon-github:before {
+  content: "";
+}
+
+.st-icon-github-alt:before {
+  content: "";
+}
+
+.st-icon-gittip:before {
+  content: "";
+}
+
+.st-icon-gmail:before {
+  content: "";
+}
+
+.st-icon-gmail-alt:before {
+  content: "";
+}
+
+.st-icon-google:before {
+  content: "";
+}
+
+.st-icon-googleplus:before {
+  content: "";
+}
+
+.st-icon-imdb:before {
+  content: "";
+}
+
+.st-icon-instagram:before {
+  content: "";
+}
+
+.st-icon-kickstarter:before {
+  content: "";
+}
+
+.st-icon-lastfm:before {
+  content: "";
+}
+
+.st-icon-linkedin:before {
+  content: "";
+}
+
+.st-icon-microsoft:before {
+  content: "";
+}
+
+.st-icon-myspace:before {
+  content: "";
+}
+
+.st-icon-pandora:before {
+  content: "";
+}
+
+.st-icon-paypal:before {
+  content: "";
+}
+
+.st-icon-paypal2:before {
+  content: "";
+}
+
+.st-icon-picasa:before {
+  content: "";
+}
+
+.st-icon-pinboard:before {
+  content: "";
+}
+
+.st-icon-pinterest:before {
+  content: "";
+}
+
+.st-icon-rdio:before {
+  content: "";
+}
+
+.st-icon-reddit:before {
+  content: "";
+}
+
+.st-icon-rss:before {
+  content: "";
+}
+
+.st-icon-sharethis:before {
+  content: "";
+}
+
+.st-icon-skype:before {
+  content: "";
+}
+
+.st-icon-slideshare:before {
+  content: "";
+}
+
+.st-icon-soundcloud:before {
+  content: "";
+}
+
+.st-icon-spotify:before {
+  content: "";
+}
+
+.st-icon-stackoverflow:before {
+  content: "";
+}
+
+.st-icon-stumbleupon:before {
+  content: "";
+}
+
+.st-icon-tumblr:before {
+  content: "";
+}
+
+.st-icon-twitter:before {
+  content: "";
+}
+
+.st-icon-vimeo:before {
+  content: "";
+}
+
+.st-icon-vine:before {
+  content: "";
+}
+
+.st-icon-windows:before {
+  content: "";
+}
+
+.st-icon-windows7:before {
+  content: "";
+}
+
+.st-icon-wordpress:before {
+  content: "";
+}
+
+.st-icon-xing:before {
+  content: "";
+}
+
+.st-icon-yahoo:before {
+  content: "";
+}
+
+.st-icon-yelp:before {
+  content: "";
+}
+
+.st-icon-youtube:before {
+  content: "";
+}
+
+.st-icon-youtube2:before {
+  content: "";
+}
+
+.st-icon-youtube-alt:before {
+  content: "";
+}
+
+.st-icon-youtube-alt-sm:before {
+  content: "";
+}
+
+.st-icon-zerply:before {
+  content: "";
+}
+
+.st-icon-menu:before {
+  content: "";
+}
+
+.st-icon-menu-alt:before {
+  content: "";
+}
+
+.st-icon-menu-alt2:before {
+  content: "";
+}
+
+.st-icon-more:before {
+  content: "";
+}
+
+.st-icon-triangle-down:before {
+  content: "";
+}
+
+.st-icon-search:before {
+  content: "";
+}
+
+.st-icon-search-alt:before {
+  content: "";
+}
+
+#qaBar {
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.qa-container {
+  display: block;
+}
+
+.qa-list {
+  padding-left: 3.5rem;
+  display: inline-flex;
+  flex-flow: row wrap;
+}
+
+.qa {
+  font-size: 1.5rem;
+  border: none;
+  background-size: cover;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.qa button {
+  padding-left: 0.5rem;
+}
+
+.qa button:hover {
+  background: transparent;
+  color: #f4f2f2;
+}
+
+.qa-button {
+  background: transparent;
+  background-size: cover;
+  color: white;
+  border: none;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.qa-button:focus {
+  outline: 0;
+}
+
+.qa-button:hover {
+  background: transparent;
+  color: #f4f2f2;
+}
+
+.qa-form {
+  display: inline-flex;
+  border: none;
+  margin-top: -2rem;
+  margin-bottom: 1.5rem;
+}
+
+.qa-form input {
+  display: block;
+  font-size: 1.25rem;
+}
+
+.qa-form input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1;
+  /* Firefox */
+}
+
+.qa-add-button {
+  font-size: 1.6rem;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5 ease;
+  margin: auto;
+  margin-left: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+/*# sourceMappingURL=quickaccess.css.map */
