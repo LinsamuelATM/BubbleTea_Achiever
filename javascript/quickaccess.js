@@ -1,16 +1,15 @@
 // QUICK ACCESS
-const max_qas = 10; // maximum number of qas
-var current = 0; // current number of qas
+const max_qas = 8; // maximum number of qas
+let current = 0; // current number of qas
 // selector
 const qaList = document.querySelector('.qa-list');
-const qaButton = document.querySelector('.qa-button');
 const qaTitle = document.querySelector('.qa-title');
 const qaHref = document.querySelector('.qa-href');
 const qaAddInput = document.querySelector('.qa-add-button');
+let qaButton = document.querySelector('.qa-button');
 
 // event listeners
 document.addEventListener('DOMContentLoaded', getQAs);
-qaButton.addEventListener('click', showAddQA);
 qaAddInput.addEventListener('click', addQA);
 qaList.addEventListener('click', deleteQA);
 
@@ -55,23 +54,37 @@ function getQAs() {
             current = index;
         }
     })
+    console.log(current);
+    if (current < max_qas-1) {
+        qaButton = document.createElement("button");
+        qaButton.classList.add("qa-button");
+        qaButton.type = "submit";
+        qaButton.innerHTML = '<i class="fa fa-plus"></i>';
+        qaList.appendChild(qaButton);
+        qaButton.addEventListener('click', showAddQA);
+        let remaining = max_qas-1-current;
+        console.log("Can add "+ remaining.toString() + " quick access shortcut(s).");
+    } else {
+        console.log("Cannot add more shortcuts: max number of qa showing.");
+    }
 }
 
 function addQA(event) {
     console.log('adding QA');
     if (current >= max_qas) {
         console.log('Max number of quick access links reached (10). Current QA not added.');
-s    } else {
+    } else {
         event.preventDefault();
 
         // validate quick access input url (to work with href)
-        var regex = /https?:\/\/.+/;
+        const regex = /https?:\/\/.+/;
         if (!(regex.test(qaHref.value))) {
         alert("Please enter url starting with http or https");
         return;
         }
         // create qa div
         const qaDiv = document.createElement("div");
+        qaDiv.style="display: none;"
         qaDiv.classList.add("qa");
 
         const className = "st-icon-more";
@@ -104,16 +117,21 @@ s    } else {
         qaList.appendChild(qaDiv);
 
         // increment count of 
+        console.log(current);
         current++;
+        window.location.reload(false);
+
+        console.log(current);
 
         // reset default value of input
+        qaTitle.value = '';
         qaHref.value = 'https://';
     }
 }
 
 // if button for adding QA is clicked, show form to enter URL of new QA
 function showAddQA() {
-    var qaForm = document.querySelector(".qa-form");
+    let qaForm = document.querySelector(".qa-form");
     // if form is not showing, show it
     // if form is showing, collapse it
     if (qaForm.style.display === "none") {
@@ -138,6 +156,7 @@ function deleteQA(e) {
             qa.remove();
         });
     }
+    return;
 }
 
 function saveLocalQAs(url, title, className) {
@@ -180,7 +199,7 @@ function removeLocalQA(qaUrl) {
     // find and remove qa from stored urls, titles, and classes
     const qaHref = qaUrl.children[0].href; // href to find in list of qas
     for (i = 0; i<qas.length; i++) {
-        var storedQA = qas[i];
+        let storedQA = qas[i];
         // if found, remove from list
         if (storedQA+'\/' === qaHref || storedQA === qaHref) {
             qas.splice(i, 1);
@@ -194,4 +213,6 @@ function removeLocalQA(qaUrl) {
     localStorage.setItem("qas", JSON.stringify(qas));
     localStorage.setItem("titles", JSON.stringify(titles));
     localStorage.setItem("classes", JSON.stringify(classes));
+    window.location.reload(false);
+
 }

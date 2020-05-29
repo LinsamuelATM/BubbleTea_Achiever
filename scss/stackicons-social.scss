@@ -35,16 +35,16 @@
 // @import "multi-color-override-shapes-stackicons-social"; // @each statement here lists brands (trim as needed)
 
 #qaBar {
-   justify-content: center;
+   display: inline-block;
    margin-top: 1.5rem;
 }
 
 .qa-container {
-   display: block;
+   margin: auto;
 }
 
 .qa-list {
-   padding-left: 3.5rem;
+   padding-left: 12%;
    display: inline-flex;
    flex-flow: row wrap;
 }
@@ -67,14 +67,15 @@
  }
 
  .qa-button {
+   padding-left: 23px;
+   padding-right: 44px;
+
    background: transparent;
    background-size: cover;
    color: white;
    border: none;
-   margin-top: 1.5rem;
-   margin-bottom: 1.5rem;
    cursor: pointer;
-   font-size: 1.5rem;
+   font-size: 1.75rem;
  }
 
  .qa-button:focus {
@@ -87,14 +88,17 @@
 }
 
  .qa-form {
-    display: inline-flex;
-    border: none;
-    margin-top: -2.0rem;
-    margin-bottom: 1.5rem;
+   padding-left: 12%;
+   padding-right: 12%;
+   border: none;
+   margin-top: 1.0rem;
+   margin-bottom: 1.5rem;
 }
 
 .qa-form input {
    display: block;
+   box-sizing: border-box;
+   width: 100%;
    font-size: 1.25rem;
 }
 
@@ -109,20 +113,6 @@
    background: transparent;
    color: white;
    cursor: pointer;
-   transition: all 0.5 ease;
-   margin: auto;
    margin-left: 0.5rem;
    margin-bottom: 0rem;
  }
-
-// .overlayed-title {
-//    width: 50%;
-//    height: 50%;
-//    position: absolute;
-//    top: 0;
-//    left: 0;
-//  }
-
-//  .overlayed-title {
-//    z-index: 1;
-//  }
