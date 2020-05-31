@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Nixie+One|Raleway:200');
 
 
-
-
   .display-container {
     margin: auto;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
   }
 
   .note-display {
@@ -27,7 +27,9 @@
   .note-display:nth-child(1) .circle__progress { stroke:white; opacity: 0.8; }
   .note-display:nth-child(2) .circle__progress { stroke: white;  opacity: 0.8;}
   .note-display:nth-child(3) .circle__progress { stroke: white; opacity: 0.8;}
-  .note-display:nth-child(4) .circle__progress { stroke: white; }
+  .note-display:nth-child(4) .circle__progress { stroke: white; opacity: 0.8;}
+  .note-display:nth-child(5) .circle__progress { stroke: white; opacity: 0.8;}
+  .note-display:nth-child(6) .circle__progress { stroke: white; opacity: 0.8;}
 
   .circle {
     position: relative;

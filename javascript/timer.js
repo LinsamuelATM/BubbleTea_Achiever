@@ -18,6 +18,7 @@ var days_completed;
 
 
 
+
 open.addEventListener('click', function(){
     if(formbutton.style.display == "block"){
         formbutton.style.display = "none"
@@ -48,6 +49,8 @@ total_days = 365;
 //New years countdown
 strokeTransition(displays[0], days_completed , total_days)
 increaseNumber(displays[0], days_left , 'int');
+
+console.log(displays[0])
 
 
 
@@ -206,4 +209,17 @@ function increaseNumber(display, number, className) {
     element.textContent = counter + decPoint;
     counter++;
   }, interval);
+}
+
+//saving the timer in the local storage once added to the list 
+function saveLocalTimer(event_name){
+  //Check --- Do I already have thing in there?
+  let timer_list;
+  if(localStorage.getItem('todos') === null){
+    timer_list=[]
+  }else{
+    timer_list = JSON.parse(localStorage.getItem('timer_list'))
+  }
+  timer_list.push(event_name);
+  localStorage.setItem('timer_list', JSON.stringify(timer_list));
 }
