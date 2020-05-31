@@ -144,7 +144,7 @@ form input, form button:focus{
 
 
 form button{
-    color:   white;
+    color: white;
     background:transparent;
     cursor: pointer;
     transition: all 0.5 ease;

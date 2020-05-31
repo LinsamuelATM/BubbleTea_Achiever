@@ -1,5 +1,3 @@
-
-
 const list_items = document.querySelectorAll('.list-item')
 const lists = document.querySelectorAll('.list')
 const button = document.querySelector('#check')
@@ -9,8 +7,6 @@ const todo_list = document.querySelector('#item3')
 const qa_bar = document.querySelector('#qaBar')
 const timer = document.querySelector('#timer')
 
-
-
 var list_1 = lists[0]; //actual list 1
 var list_2 = lists[1]; //actual list 2
 var list_3 = lists[2]; //actual list 3
@@ -18,8 +14,6 @@ var list_3 = lists[2]; //actual list 3
 var virtual_list1;
 var virtual_list2;
 var virtual_list3;
-
-
 
 // Creating a local storage "list_One" for first time users
 if(localStorage.getItem('list_One') === null){
@@ -64,7 +58,7 @@ if(virtual_list1.length > 0){
                 list_1.append(item3)
                 break;
             case "qaBar":
-                list_1.append(qa_bar)
+                list_1.append(qaBar)
                 break;
             case "timer":
                 list_1.append(timer)
@@ -88,7 +82,7 @@ if(virtual_list2.length > 0){
                 list_2.append(item3)
                 break;
             case "qaBar":
-                list_2.append(qa_bar)
+                list_2.append(qaBar)
                 break;
             case "timer":
                 list_2.append(timer)
@@ -111,7 +105,7 @@ if(virtual_list3.length > 0){
                 list_3.append(item3)
                 break;
             case "qaBar":
-                list_3.append(qa_bar)
+                list_1.append(qaBar)
                 break;
             case "timer":
                 list_3.append(timer)
