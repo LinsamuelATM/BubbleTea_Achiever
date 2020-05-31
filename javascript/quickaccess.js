@@ -1,4 +1,5 @@
 // QUICK ACCESS
+localStorage.clear()
 const max_qas = 8; // maximum number of qas
 let current = 0; // current number of qas
 // selector

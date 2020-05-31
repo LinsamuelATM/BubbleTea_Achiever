@@ -58,7 +58,7 @@
  }
  
  .qa button {
-   padding-left: 0.5rem;
+    padding-left: 0.5rem;
  }
  
 .qa button:hover {
@@ -66,10 +66,22 @@
    color: rgb(244, 242, 242);
  }
 
+//  .qa-button:not(:last-child) {
+//    padding-left: 23px;
+//    padding-right: 44px;
+//    background: transparent;
+//    background-size: cover;
+//    color: white;
+//    border: none;
+//    cursor: pointer;
+//    font-size: 1.75rem;
+//  }
+
+
  .qa-button {
+   // margin-top: 3.5%;
    padding-left: 23px;
    padding-right: 44px;
-
    background: transparent;
    background-size: cover;
    color: white;
