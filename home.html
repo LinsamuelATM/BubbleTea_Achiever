@@ -11,6 +11,8 @@
     <link rel="stylesheet" href='./css/bubbletea.css'>
     <link rel="stylesheet" href="./css/timer.css">
     <link rel="stylesheet" href="./css/quickaccess.css">
+
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>BubbleTea Achiever</title>
@@ -80,8 +82,7 @@
 
 
       <!-- list One -->
-      <div class="list" id="list-1">
-
+        <div class="list" id="list-1">
 
         <!-- quick access bar -->
         <div class="list-item" id="qaBar" draggable="true">
@@ -112,9 +113,10 @@
 
         <!-- clock -->    
         <div class="list-item" id="clock"  draggable="true">
-        </div>
 
-        <!-- weather info -->
+          </div>
+
+            <!-- weather info -->
         <div class="list-item" id= "item2" draggable="true">
             <p id="city"> </p>
             <p id="condition"> </p>
@@ -124,81 +126,102 @@
                     <p id="temp"> </p> 
                   </figure> 
             </p>
-        </div>
-        
-        <!-- todo list -->
-        <div class="list-item" id = "item3"  draggable="true">
-          <form class="input_form">
-            <input type="text" class="todo-input">
-            <button class="todo-button" type="submit" disabled = true>
-              <i class="fas fa-plus-square"></i>
-            </button>
-            <div class="select">
-              <select name="todos" class="fliter-todo">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
-                <option value="Uncompleted">Uncompleted</option>
-              </select>
-            </div>
-          </form>
-          <div class="todo-container">
-            <ul class="todo-list">
-            </ul>
           </div>
+
+        
+
+            <!-- todo list -->
+          
+            <div class="list-item" id = "item3"  draggable="true">
+              <form class="input_form">
+                <input type="text" class="todo-input">
+                <button class="todo-button" type="submit" disabled = true>
+                  <i class="fas fa-plus-square"></i>
+                </button>
+
+                <!--
+                   <div class="select">
+                    <select name="todos" class="fliter-todo">
+                      <option value="all">All</option>
+                      <option value="completed">Completed</option>
+                      <option value="Uncompleted">Uncompleted</option>
+                    </select>
+                  </div>
+                  -->
+              </form>
+
+              <div class="todo-container">
+                <ul class="todo-list">
+          
+                </ul>
+              </div>
+            </div>
+
+
         </div>
-      </div>
 
-      <!-- list Three-->
-      <div class="list" id="list-3">
-        <div class="list-item" id="timer" draggable="true">
-          <ul class="display-container">
 
-                <li class="note-display" >
-                    <div class="circle">
-                      <svg width="200" height="200" class="circle__svg">
-                        <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
-                        <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
-                      </svg>
-                
-                      <div class="percent">
-                        <span class="percent__int">0.</span>
-                        <span class="percent__dec">days</span>
-                      </div>
-                    </div>
-                
-                    <span class="label"> New years</span>
-                  </li>
 
-                  <li class="note-display">
-                      <div class="circle">
-                        <svg width="200" height="200" class="circle__svg">
-                          <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
-                          <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
-                        </svg>
-                  
-                        <div class="percent">
-                          <span class="percent__int">0.</span>
-                          <span class="percent__dec">days</span>
-                        </div>
-                      </div>
-                  
-                      <span class="label"> Christmas </span>
-                    </li>
-          </ul>
-        </div>
-      </div>
+
+          <!-- list Three-->
+          <div class="list" id="list-3">
+              <div class="list-item" id="timer" draggable="true">
+
+
+                  <ul class="display-container">
+
+                    <!-- 
+                      <li class="note-display New_years" >
+                          <div class="circle">
+                            <svg width="200" height="200" class="circle__svg">
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                            </svg>
+                      
+                            <div class="percent">
+                              <span class="percent__int">0.</span>
+                              <span class="percent__dec">days</span>
+                            </div>
+                          </div>
+                      
+                          <span class="label"> New years</span>
+                        </li>
+
+                        <li class="note-display Christmas">
+                            <div class="circle">
+                              <svg width="200" height="200" class="circle__svg">
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                              </svg>
+                        
+                              <div class="percent">
+                                <span class="percent__int">0.</span>
+                                <span class="percent__dec">days</span>
+                              </div>
+                            </div>
+                        
+                            <span class="label"> Christmas </span>
+                          </li>
+                        -->
+                  </ul>
+              </div>
+
+          </div>
+
+
+
+    </div>
 </body>
 
 
 <script type="text/javascript" src="./javascript/colourpicker.js"></script>
 <script type="text/javascript" src="./javascript/skycons.js"></script>
 <script type="text/javascript" src="./javascript/draggable.js"></script>
-<script type="text/javascript" src='./javascript/quickaccess.js'></script>
 <script type="text/javascript" src="./javascript/skycons.js"></script>
 <script type="text/javascript" src="./javascript//weather.js"></script>
 <script type="text/javascript" src="./javascript/script.js"></script>
 <script type="text/javascript" src='./javascript/particles.js'></script>
 <script type="text/javascript" src='./javascript/quickaccess.js'></script>
 <script type="text/javascript" src='./javascript/app.js'></script>
-<script type="text/javascript" src="./javascript/timer.js"></script>
+<script src="./javascript/timer.js"></script>
 </html>
