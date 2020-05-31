@@ -1,0 +1,125 @@
+#bubbletea{
+    font-size: 2.5rem;
+    min-height: 0.5vh;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.cup{
+    height: 200px;
+    width: 140px;
+    border: 6px solid white;
+    border-radius: 0px 0px 20px 20px;
+    background-image: url(../images/coffee.png);
+    background-repeat: repeat-x;
+    background-size: 240px;
+    background-position: -225px 200px;
+    animation: fill 3s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fill{
+    0%{
+        background-position: -225px  200px;
+    }
+
+    5%{
+        background-position: -300px 200px;
+    }
+    
+    10%{
+        background-position: -375px 200px;
+    }
+
+    15%{
+        background-position: -450px 200px;
+    }
+
+    20%{
+        background-position: -525px 200px;
+    }
+
+    25%{
+        background-position: -600px 200px;
+    }
+
+    30%{
+        background-position: -675px 200px;
+    }
+
+    35%{
+        background-position: -750px 200px;
+    }
+
+    40%{
+        background-position: -825px 200px;
+    }
+
+    10%{
+        background-position: -900px 200px;
+    }
+
+    45%{
+        background-position: -975px 200px;
+    }
+
+    50%{
+        background-position: -1050px 200px;
+    }
+
+    55%{
+        background-position: -1125px 200px;
+    }
+
+    60%{
+        background-position: -1200px 200px;
+    }
+
+    65%{
+        background-position: -1275px 200px;
+    }
+
+    70%{
+        background-position: -1350px 200px;
+    }
+
+    75%{
+        background-position: -1425px 200px;
+    }
+
+    80%{
+        background-position: -1500px 200px;
+    }
+
+    85%{
+        background-position: -1575px 200px;
+    }
+
+    90%{
+        background-position: -1650px 200px;
+    }
+
+    95%{
+        background-position: -1725px 200px;
+    }
+
+    100%{
+        background-position: -1800px 200px;
+    }
+}
+
+.cap{
+    height: 10px;
+    width: 230px;
+    background-color: transparent;
+    border: 6px solid white;
+    position: relative;
+    bottom: 26px;
+    right: 21px;
+    
+
+}

@@ -18,7 +18,6 @@ todoInput.addEventListener('keyup', stoppedTyping)
 
 //disables the button of the input value of todo-input is empty
 function stoppedTyping(){
-    console.log(this.value.length)
     if(this.value.length > 0) { 
        
         document.querySelector('.todo-button').disabled = false; 
@@ -134,6 +133,9 @@ function saveLocalTodos(todo){
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
 }
+
+
+
 
 function getTodos(){
     let todos;

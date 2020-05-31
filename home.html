@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/colourpicker.css">
     <link rel="stylesheet" href="./css/particles.css">
+    <link rel="stylesheet" href='./css/bubbletea.css'>
+    <link rel="stylesheet" href="./css/timer.css">
     <link rel="stylesheet" href="./css/quickaccess.css">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <title>BubbleTea Achiever</title>
@@ -23,9 +24,36 @@
 
       <!-- BubbleTea_Ahiever header and edit checkbox -->
       <h1> BubbleTea_Achiever</h1>
-      <input type="checkbox" id="check">
+     
 
     </header>
+
+    <div class="top-container">
+    <div id="edit">
+           <p>    Edit
+              <input type="checkbox" id="check">
+           </p> 
+    </div>
+
+    <button class="open-button">Create count_down</button>
+
+    <div class="form-popup" id="myForm">
+        <form class="form-container">
+        
+             <div>
+                  <p> Event Name</p>
+                  <input type="text" class="count_down_input"id="event_input" autocomplete="off">
+                  <p> Day</p>
+                  <input type="text" class="count_down_input" id="day_input" autocomplete="off">
+                  <p> Month </p>
+                  <input type="text" class="count_down_input" id="month_input" autocomplete="off">
+                  <p> Year </p>
+                  <input type="text" class="count_down_input"id="year_input" autocomplete="off">
+
+                  <button type="button" id="count_down_create"> Create</button>
+             </div>
+        </form>
+      </div>
 
      <!-- Search bar -->
     <header>
@@ -34,6 +62,7 @@
       </form>
 
     </header>
+  </div>
 
 
      <!-- Colour Picker -->
@@ -95,38 +124,92 @@
                     <p id="temp"> </p> 
                   </figure> 
             </p>
-        </div>
-
-        <!-- todo list -->
-        <div class="list-item" id = "item3"  draggable="true">
-          <form class="input_form">
-            <input type="text" class="todo-input">
-            <button class="todo-button" type="submit" disabled = true>
-              <i class="fas fa-plus-square"></i>
-            </button>
-
-            <!--
-                <div class="select">
-                <select name="todos" class="fliter-todo">
-                  <option value="all">All</option>
-                  <option value="completed">Completed</option>
-                  <option value="Uncompleted">Uncompleted</option>
-                </select>
-              </div>
-              -->
-          </form>
-          <div class="todo-container">
-            <ul class="todo-list">
-      
-            </ul>
           </div>
+
+        
+
+            <!-- todo list -->
+          
+            <div class="list-item" id = "item3"  draggable="true">
+              <form class="input_form">
+                <input type="text" class="todo-input">
+                <button class="todo-button" type="submit" disabled = true>
+                  <i class="fas fa-plus-square"></i>
+                </button>
+
+                <!--
+                   <div class="select">
+                    <select name="todos" class="fliter-todo">
+                      <option value="all">All</option>
+                      <option value="completed">Completed</option>
+                      <option value="Uncompleted">Uncompleted</option>
+                    </select>
+                  </div>
+                  -->
+              </form>
+
+              <div class="todo-container">
+                <ul class="todo-list">
+          
+                </ul>
+              </div>
+            </div>
+
+
         </div>
       </div>
 
       <!-- list Three-->
       <div class="list" id="list-3">
 
+<<<<<<< HEAD
       </div>
+=======
+
+
+          <!-- list Three-->
+          <div class="list" id="list-3">
+              <div class="list-item" id="timer" draggable="true">
+
+
+                  <ul class="display-container">
+
+                      <li class="note-display" >
+                          <div class="circle">
+                            <svg width="200" height="200" class="circle__svg">
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                              <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                            </svg>
+                      
+                            <div class="percent">
+                              <span class="percent__int">0.</span>
+                              <span class="percent__dec">days</span>
+                            </div>
+                          </div>
+                      
+                          <span class="label"> New years</span>
+                        </li>
+
+                        <li class="note-display">
+                            <div class="circle">
+                              <svg width="200" height="200" class="circle__svg">
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--path"></circle>
+                                <circle cx="100" cy="100" r="75" class="circle__progress circle__progress--fill"></circle>
+                              </svg>
+                        
+                              <div class="percent">
+                                <span class="percent__int">0.</span>
+                                <span class="percent__dec">days</span>
+                              </div>
+                            </div>
+                        
+                            <span class="label"> Christmas </span>
+                          </li>
+                  </ul>
+              </div>
+
+          </div>
+>>>>>>> Sam
 
 
 
@@ -143,5 +226,7 @@
 <script type="text/javascript" src="./javascript//weather.js"></script>
 <script type="text/javascript" src="./javascript/script.js"></script>
 <script type="text/javascript" src='./javascript/particles.js'></script>
+<script type="text/javascript" src='./javascript/quickaccess.js'></script>
 <script type="text/javascript" src='./javascript/app.js'></script>
+<script src="./javascript/timer.js"></script>
 </html>
