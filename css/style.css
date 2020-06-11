@@ -132,6 +132,7 @@ form button {
 
 form input {
     border-bottom: 1px solid white;
+    width: 100%;
 }
 
 form input, form button:focus{

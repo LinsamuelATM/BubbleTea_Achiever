@@ -50,7 +50,7 @@ total_days = 365;
 strokeTransition(displays[0], days_completed , total_days)
 increaseNumber(displays[0], days_left_Newyears , 'int');
 
-console.log(displays[0])
+// console.log(displays[0])
 
 
 

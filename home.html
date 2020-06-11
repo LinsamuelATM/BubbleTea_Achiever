@@ -14,7 +14,6 @@
 
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <title>BubbleTea Achiever</title>
 </head>
 <body>
@@ -22,94 +21,86 @@
   <!-- particle animation in the background -->
   <div id="particles-js"></div>
 
-    <header>
+  <header>
+    <!-- BubbleTea_Ahiever header and edit checkbox -->
+    <h1> BubbleTea_Achiever</h1>
+  </header>
 
-      <!-- BubbleTea_Ahiever header and edit checkbox -->
-      <h1> BubbleTea_Achiever</h1>
-     
-
-    </header>
-
-    <div class="top-container">
+  <div class="top-container">
     <div id="edit">
-           <p>    Edit
-              <input type="checkbox" id="check">
-           </p> 
+      <p>    Edit
+        <input type="checkbox" id="check">
+      </p> 
     </div>
 
     <button class="open-button">Create count_down</button>
 
     <div class="form-popup" id="myForm">
-        <form class="form-container">
-        
-             <div>
-                  <p> Event Name</p>
-                  <input type="text" class="count_down_input"id="event_input" autocomplete="off">
-                  <p> Day</p>
-                  <input type="text" class="count_down_input" id="day_input" autocomplete="off">
-                  <p> Month </p>
-                  <input type="text" class="count_down_input" id="month_input" autocomplete="off">
-                  <p> Year </p>
-                  <input type="text" class="count_down_input"id="year_input" autocomplete="off">
-
-                  <button type="button" id="count_down_create"> Create</button>
-             </div>
-        </form>
-      </div>
-
-     <!-- Search bar -->
-    <header>
-        <form class="search" action="https://www.google.com/search" method = "GET">
-          <input autocomplete="off" class="search_input"type="text" name="q" placeholder="Search . . .">
+      <form class="form-container">
+        <div>
+          <p> Event Name</p>
+          <input type="text" class="count_down_input"id="event_input" autocomplete="off">
+          <p> Day</p>
+          <input type="text" class="count_down_input" id="day_input" autocomplete="off">
+          <p> Month </p>
+          <input type="text" class="count_down_input" id="month_input" autocomplete="off">
+          <p> Year </p>
+          <input type="text" class="count_down_input"id="year_input" autocomplete="off">
+          <button type="button" id="count_down_create"> Create</button>
+        </div>
       </form>
-
-    </header>
+    </div>
   </div>
 
+  <!-- Search bar -->
+  <header>
+    <form class="search" action="https://www.google.com/search" method = "GET">
+      <input autocomplete="off" class="search_input"type="text" name="q" placeholder="Search . . .">
+    </form>
+  </header>
 
-     <!-- Colour Picker -->
-    <div class="box">
-        <a id="red">#C10000</a>
-        <a id="orange">#FF7400</a>
-        <a id="yellow">#FFC100</a>
-        <a id="green">#2E5511</a>
-        <a id="blue">#0082C8</a>
-    </div>
+  <!-- Colour Picker -->
+  <div class="box">
+      <a id="red">#C10000</a>
+      <a id="orange">#FF7400</a>
+      <a id="yellow">#FFC100</a>
+      <a id="green">#2E5511</a>
+      <a id="blue">#0082C8</a>
+  </div>
+
+  <!-- Three lists-->
+  <div class="lists">
 
 
-     <!-- Three lists-->
-    <div class="lists">
+    <!-- list One -->
+    <div class="list" id="list-1">
 
+      <!-- quick access bar -->
+      <div class="list-item" id="qaBar" draggable="true">
 
-      <!-- list One -->
-        <div class="list" id="list-1">
-
-        <!-- quick access bar -->
-        <div class="list-item" id="qaBar" draggable="true">
-          <div class="qa-container"> 
-                <nav class="qa-list" style="font-size:100%;">
-                </nav>
-            <!-- button to add new quick access link -->
-          </div>
-          <!-- form for adding quick access links -->
-          <form class="qa-form" style="display: none;">
-            <div class="qa-form-inputs">
-              <input title="title" type="text" class="qa-title placeholder-shown" placeholder="Title" autocomplete="on">
-              <input title="URL" type="text" class="qa-href" autocomplete="off">
-            </div>
-            <button class="qa-add-button" type="submit">
-              <i class="fas fa-plus-square"></i>
-            </button>
-          </form>
+        <div class="qa-container"> 
+          <nav class="qa-list" style="font-size:100%;">
+          </nav>
         </div>
 
-        
+        <!-- form for adding quick access links -->
+        <form class="qa-form" style="display: none;">
+          <div class="qa-form-inputs">
+            <input title="title" type="text" class="qa-title placeholder-shown" placeholder="Title" autocomplete="on">
+            <input title="URL" type="text" class="qa-href" autocomplete="off">
+          </div>
+          <button class="qa-add-btn" id="qa-submit" type="submit" index=-1>
+            <i class="fas fa-check-square"></i>
+          </button>
+        </form>
+
       </div>
 
+    </div> <!-- end of list one -->
 
-      <!-- list Two  -->
-      <div class="list" id="list-2">
 
+    <!-- list Two  -->
+    <div class="list" id="list-2">
 
         <!-- clock -->    
         <div class="list-item" id="clock"  draggable="true">

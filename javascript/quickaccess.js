@@ -1,17 +1,21 @@
 // QUICK ACCESS
-const max_qas = 8; // maximum number of qas
-let current = 0; // current number of qas
+localStorage.clear();
+const qa_max = 8; // maximum number of qas
+let qa_count = 0; // current number of qas
+
 // selector
 const qaList = document.querySelector('.qa-list');
 const qaTitle = document.querySelector('.qa-title');
 const qaHref = document.querySelector('.qa-href');
-const qaAddInput = document.querySelector('.qa-add-button');
+const qaAddInput = document.querySelector('.qa-add-btn');
 let qaButton = document.querySelector('.qa-button');
+var editSelection = document.getElementById('check');
+
 
 // event listeners
 document.addEventListener('DOMContentLoaded', getQAs);
-qaAddInput.addEventListener('click', addQA);
-qaList.addEventListener('click', deleteQA);
+qaList.addEventListener('click', changeQA);
+editSelection.addEventListener('click', editQAs);
 
 function getQAs() {
     let qas;
@@ -31,9 +35,9 @@ function getQAs() {
         classes = JSON.parse(localStorage.getItem("classes"));
     }
     qas.forEach(function(qa, index) {
-        if (index >= max_qas) {
+        if (index >= qa_max) {
             console.log("max number of qas loaded");
-            current = max_qas;
+            qa_count = qa_max;
         } else {
             // create qa div
             const qaDiv = document.createElement("div");
@@ -51,18 +55,18 @@ function getQAs() {
             qaDiv.appendChild(deleteButton);
             // append qa div to list of qas
             qaList.appendChild(qaDiv);
-            current = index;
+            qa_count = index;
         }
     })
-    console.log(current);
-    if (current < max_qas-1) {
+    console.log(qa_count);
+    if (qa_count < qa_max-1) {
         qaButton = document.createElement("button");
         qaButton.classList.add("qa-button");
         qaButton.type = "submit";
         qaButton.innerHTML = '<i class="fa fa-plus"></i>';
         qaList.appendChild(qaButton);
         qaButton.addEventListener('click', showAddQA);
-        let remaining = max_qas-1-current;
+        let remaining = qa_max-1-qa_count;
         console.log("Can add "+ remaining.toString() + " quick access shortcut(s).");
     } else {
         console.log("Cannot add more shortcuts: max number of qa showing.");
@@ -71,8 +75,11 @@ function getQAs() {
 
 function addQA(event) {
     console.log('adding QA');
-    if (current >= max_qas) {
-        console.log('Max number of quick access links reached (10). Current QA not added.');
+    if (event.target.index === -1) {
+        return;
+    }
+    if (qa_count >= qa_max) {
+        console.log('Max number of quick access links reached ('+qa_max+'). qa_count QA not added.');
     } else {
         event.preventDefault();
 
@@ -80,7 +87,7 @@ function addQA(event) {
         const regex = /https?:\/\/.+/;
         if (!(regex.test(qaHref.value))) {
         alert("Please enter url starting with http or https");
-        return;
+        // return;
         }
         // create qa div
         const qaDiv = document.createElement("div");
@@ -117,11 +124,11 @@ function addQA(event) {
         qaList.appendChild(qaDiv);
 
         // increment count of 
-        console.log(current);
-        current++;
-        window.location.reload(false);
+        console.log(qa_count);
+        qa_count++;
+        // window.location.reload(false);
 
-        console.log(current);
+        console.log(qa_count);
 
         // reset default value of input
         qaTitle.value = '';
@@ -145,8 +152,9 @@ function showAddQA() {
     }
 }
 
-function deleteQA(e) {
+function changeQA(e) {
     const item = e.target;
+    console.log(item);
     // delete
     if (item.classList[0]  === "trash-btn") {
         const qa = item.parentElement;
@@ -156,7 +164,18 @@ function deleteQA(e) {
             qa.remove();
         });
     }
-    return;
+    // edit
+    if (item.classList[0]  === "edit-btn") {
+        const qa = item.parentElement;
+        // qa.classList.add("fall");
+        console.log("editing");
+        editQA(qa);
+    }
+    // // submit new QA
+    // // if (item.classLsit[Z])
+    // qaAddInput.addEventListener('click', addQA);
+    // // submit edited QA
+    // qaAddInput.addEventListener('click', editQA);
 }
 
 function saveLocalQAs(url, title, className) {
@@ -181,7 +200,7 @@ function saveLocalQAs(url, title, className) {
     localStorage.setItem("classes", JSON.stringify(classes));
 }
 
-function removeLocalQA(qaUrl) {
+function removeLocalQA(qa) {
     let qas;
     let titles;
     let classes;
@@ -197,7 +216,7 @@ function removeLocalQA(qaUrl) {
     }
 
     // find and remove qa from stored urls, titles, and classes
-    const qaHref = qaUrl.children[0].href; // href to find in list of qas
+    const qaHref = qa.children[0].href; // href to find in list of qas
     for (i = 0; i<qas.length; i++) {
         let storedQA = qas[i];
         // if found, remove from list
@@ -214,5 +233,97 @@ function removeLocalQA(qaUrl) {
     localStorage.setItem("titles", JSON.stringify(titles));
     localStorage.setItem("classes", JSON.stringify(classes));
     window.location.reload(false);
+}
 
+function editQAs(event) {
+    console.log('edit buttons clicked')
+    event.preventDefault();
+    if (editSelection.checked="") {
+        let buttons = document.getElementsByClassName('trash-btn');
+        let length = buttons.length;
+        for (i = 0; i<length; i++) {
+            var button = buttons.item(0);
+            button.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+            button.classList.replace("trash-btn", "edit-btn");
+        }
+    } else if (editSelection.checked="checked") {
+        let buttons = document.getElementsByClassName('edit-btn');
+        let length = buttons.length;
+        for (i = 0; i<length; i++) {
+            var button = buttons.item(0);
+            button.innerHTML = '<i class="fas fa-trash"></i>';
+            button.classList.replace("edit-btn", "trash-btn");
+        }
+    }
+}
+
+function editQA(qa) {
+
+    let qas;
+    let titles;
+    let classes;
+    // get list of qas from storage
+    if (localStorage.getItem("qas") === null) {
+        qas = [];
+        titles = [];
+        classes = [];
+    } else {
+        qas = JSON.parse(localStorage.getItem("qas"));
+        titles = JSON.parse(localStorage.getItem("titles"));
+        classes = JSON.parse(localStorage.getItem("classes"));
+    }
+
+    // find and show qa from stored urls, titles, and classes
+    const qaHref = qa.children[0].href; // href to find in list of qas
+    for (i = 0; i<qas.length; i++) {
+        let storedQA = qas[i];
+        // if found, show
+        if (storedQA+'\/' === qaHref || storedQA === qaHref) {
+            let qaForm = document.querySelector(".qa-form");
+            qaForm.style.display = "inline-flex";
+
+            let title = document.querySelector(".qa-title");
+            let href = document.querySelector(".qa-href");
+            title.focus();
+            title.value = titles[i];
+            href.value = qas[i];
+
+            console.log("now showing");
+            // qaAddInput.classList.add("qa-edit-btn");
+            qaAddInput.addEventListener('click', editLocalQA);
+            qaAddInput.index = i;
+            console.log("qaAddInput.index: "+qaAddInput.index);
+            break;
+        }
+    }
+}
+
+function editLocalQA(e) {
+    console.log(e.target);
+    // console.log("edited");
+    // const index = e.index;
+    // let qas;
+    // let titles;
+    // let classes;
+    // // get list of qas from storage
+    // if (localStorage.getItem("qas") === null) {
+    //     qas = [];
+    //     titles = [];
+    //     classes = [];
+    // } else {
+    //     qas = JSON.parse(localStorage.getItem("qas"));
+    //     titles = JSON.parse(localStorage.getItem("titles"));
+    //     classes = JSON.parse(localStorage.getItem("classes"));
+    // }
+
+    // qas[index] = qaHref.value;
+    // console.log(qaTitle.value);
+    // titles[index] = qaTitle.value
+    // classes[index] = "st-icon-more";
+
+    // // set storage
+    // localStorage.setItem("qas", JSON.stringify(qas));
+    // localStorage.setItem("titles", JSON.stringify(titles));
+    // localStorage.setItem("classes", JSON.stringify(classes));
+    // // window.location.reload(false);
 }
