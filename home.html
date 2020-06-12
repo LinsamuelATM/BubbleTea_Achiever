@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./css/timer.css">
     <link rel="stylesheet" href="./css/quickaccess.css">
 
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BubbleTea Achiever</title>
 </head>
@@ -28,8 +27,9 @@
 
   <div class="top-container">
     <div id="edit">
-      <p>    Edit
+      <p>Edit:
         <input type="checkbox" id="check">
+        <!-- <button type="button" id="check">Edit</button> -->
       </p> 
     </div>
 
@@ -94,6 +94,18 @@
           </button>
         </form>
 
+      </div>
+      <div class="list-item" id="siteblocker" draggable="true">
+        <p>Allow access:
+          <input type="checkbox" id="webRequestAccess">
+        </p>
+        <div class="sa-container">
+          <p>Currently blocked sites:</p>
+          <p>Time left:</p>
+        </div>
+        <div class="sa-form">
+
+        </div>
       </div>
 
     </div> <!-- end of list one -->
@@ -213,6 +225,7 @@
 <script type="text/javascript" src="./javascript/script.js"></script>
 <script type="text/javascript" src='./javascript/particles.js'></script>
 <script type="text/javascript" src='./javascript/quickaccess.js'></script>
+<script type="text/javascript" src='./javascript/siteblocker.js'></script>
 <script type="text/javascript" src='./javascript/app.js'></script>
 <script src="./javascript/timer.js"></script>
 </html>

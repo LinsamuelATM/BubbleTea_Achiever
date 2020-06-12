@@ -1,5 +1,4 @@
 // QUICK ACCESS
-localStorage.clear();
 const qa_max = 8; // maximum number of qas
 let qa_count = 0; // current number of qas
 
@@ -7,16 +6,17 @@ let qa_count = 0; // current number of qas
 const qaList = document.querySelector('.qa-list');
 const qaTitle = document.querySelector('.qa-title');
 const qaHref = document.querySelector('.qa-href');
-const qaAddInput = document.querySelector('.qa-add-btn');
+const qaSubmit = document.getElementById('qa-submit');
 let qaButton = document.querySelector('.qa-button');
 var editSelection = document.getElementById('check');
-
 
 // event listeners
 document.addEventListener('DOMContentLoaded', getQAs);
 qaList.addEventListener('click', changeQA);
-editSelection.addEventListener('click', editQAs);
+qaSubmit.addEventListener('click', addQA);
+editSelection.addEventListener('change', editQAs)
 
+// set/load QAs to/from local storage and webpage
 function getQAs() {
     let qas;
     let titles;
@@ -58,7 +58,6 @@ function getQAs() {
             qa_count = index;
         }
     })
-    console.log(qa_count);
     if (qa_count < qa_max-1) {
         qaButton = document.createElement("button");
         qaButton.classList.add("qa-button");
@@ -69,15 +68,23 @@ function getQAs() {
         let remaining = qa_max-1-qa_count;
         console.log("Can add "+ remaining.toString() + " quick access shortcut(s).");
     } else {
-        console.log("Cannot add more shortcuts: max number of qa showing.");
+        console.log("Cannot add more shortcuts: max number of qa showing "+ (qa_count+1));
     }
 }
 
+// add QA
 function addQA(event) {
+    // check if this is an edit of an existing qa
+    if (qaSubmit.classList.contains("qa-edit-btn")) {
+        return;
+    }
+
     console.log('adding QA');
     if (event.target.index === -1) {
         return;
     }
+
+    // check if the max amount of qas have already been added, if not, add new QA
     if (qa_count >= qa_max) {
         console.log('Max number of quick access links reached ('+qa_max+'). qa_count QA not added.');
     } else {
@@ -86,15 +93,15 @@ function addQA(event) {
         // validate quick access input url (to work with href)
         const regex = /https?:\/\/.+/;
         if (!(regex.test(qaHref.value))) {
-        alert("Please enter url starting with http or https");
-        // return;
+            alert("Please enter url starting with http or https");
+            // return;
         }
         // create qa div
         const qaDiv = document.createElement("div");
         qaDiv.style="display: none;"
         qaDiv.classList.add("qa");
 
-        const className = "st-icon-more";
+        const className = getIcon(qaHref.value);
 
         // set quick access name
         // const QAName = document.createElement("a");
@@ -124,11 +131,8 @@ function addQA(event) {
         qaList.appendChild(qaDiv);
 
         // increment count of 
-        console.log(qa_count);
         qa_count++;
-        // window.location.reload(false);
-
-        console.log(qa_count);
+        window.location.reload(false);
 
         // reset default value of input
         qaTitle.value = '';
@@ -143,20 +147,28 @@ function showAddQA() {
     // if form is showing, collapse it
     if (qaForm.style.display === "none") {
         qaForm.style.display = "inline-flex";
+        document.querySelector(".qa-title").value="";
         document.querySelector(".qa-title").focus();
         document.querySelector(".qa-href").value="https://";
-        console.log("now showing");
+        console.log("qa-form now showing");
     } else {
         qaForm.style.display = "none";
-        console.log("now hidden");
+        console.log("qa-form now hidden");
     }
 }
 
+// if edit button is checked/unchecked, change icons
 function changeQA(e) {
-    const item = e.target;
-    console.log(item);
+    let item = e.target;
+    // clicking on button's icon === clicking on button
+    // if icon is clicked on, change target item to button
+    if (item.classList[0] === "fas") {
+        console.log("clicked on icon (changing to actual button)");
+        item = item.parentElement;
+    }
     // delete
     if (item.classList[0]  === "trash-btn") {
+        console.log("trying to delete")
         const qa = item.parentElement;
         qa.classList.add("fall");
         removeLocalQA(qa);
@@ -166,18 +178,16 @@ function changeQA(e) {
     }
     // edit
     if (item.classList[0]  === "edit-btn") {
+        console.log("trying to edit")
         const qa = item.parentElement;
         // qa.classList.add("fall");
         console.log("editing");
-        editQA(qa);
+        retrieveLocalQA(qa);
+        qaSubmit.classList.replace("qa-edit-btn", "qa-add-btn");
     }
-    // // submit new QA
-    // // if (item.classLsit[Z])
-    // qaAddInput.addEventListener('click', addQA);
-    // // submit edited QA
-    // qaAddInput.addEventListener('click', editQA);
 }
 
+// save new QA to local storage
 function saveLocalQAs(url, title, className) {
     // check for local qa
     let qas;
@@ -192,6 +202,7 @@ function saveLocalQAs(url, title, className) {
         titles = JSON.parse(localStorage.getItem("titles"));
         classes = JSON.parse(localStorage.getItem("classes"));
     }
+    // push and store attributes of new QA
     qas.push(url);
     titles.push(title);
     classes.push(className);
@@ -200,6 +211,7 @@ function saveLocalQAs(url, title, className) {
     localStorage.setItem("classes", JSON.stringify(classes));
 }
 
+// delete/remove QA details from local storage
 function removeLocalQA(qa) {
     let qas;
     let titles;
@@ -235,10 +247,13 @@ function removeLocalQA(qa) {
     window.location.reload(false);
 }
 
+// if user wants to edit, change icons to edit icon
+// if user does not want to edit, change icons back to trash icon
 function editQAs(event) {
-    console.log('edit buttons clicked')
     event.preventDefault();
-    if (editSelection.checked="") {
+    if (editSelection.editing==="false" || editSelection.editing===undefined) {
+        // if user wants to edit
+        console.log("trash -> edit")
         let buttons = document.getElementsByClassName('trash-btn');
         let length = buttons.length;
         for (i = 0; i<length; i++) {
@@ -246,7 +261,12 @@ function editQAs(event) {
             button.innerHTML = '<i class="fas fa-pencil-alt"></i>';
             button.classList.replace("trash-btn", "edit-btn");
         }
-    } else if (editSelection.checked="checked") {
+        editSelection.editing="true";
+    } else if (editSelection.editing==="true") {
+        // user does not want to edit
+        console.log("trash <- edit")
+        let qaForm = document.querySelector(".qa-form");
+        qaForm.style.display = "none";
         let buttons = document.getElementsByClassName('edit-btn');
         let length = buttons.length;
         for (i = 0; i<length; i++) {
@@ -254,11 +274,14 @@ function editQAs(event) {
             button.innerHTML = '<i class="fas fa-trash"></i>';
             button.classList.replace("edit-btn", "trash-btn");
         }
+        editSelection.editing="false";
     }
 }
 
-function editQA(qa) {
-
+// retrieve details/attributes of selected QA & load to form
+// add event listener for saving edited QA
+function retrieveLocalQA(qa) {
+    // retrieve from local storage
     let qas;
     let titles;
     let classes;
@@ -277,53 +300,98 @@ function editQA(qa) {
     const qaHref = qa.children[0].href; // href to find in list of qas
     for (i = 0; i<qas.length; i++) {
         let storedQA = qas[i];
-        // if found, show
+        // if found, load to qa editing form and stop searching (break from loop)
         if (storedQA+'\/' === qaHref || storedQA === qaHref) {
+
+            // load and show attributes of selected QA to qa-form
             let qaForm = document.querySelector(".qa-form");
             qaForm.style.display = "inline-flex";
-
             let title = document.querySelector(".qa-title");
             let href = document.querySelector(".qa-href");
             title.focus();
             title.value = titles[i];
             href.value = qas[i];
 
-            console.log("now showing");
-            // qaAddInput.classList.add("qa-edit-btn");
-            qaAddInput.addEventListener('click', editLocalQA);
-            qaAddInput.index = i;
-            console.log("qaAddInput.index: "+qaAddInput.index);
+            // change class of submit button on form to reflect that
+            // it is now an edit form (not an add form)
+            if (qaSubmit.classList.contains("qa-add-btn")) {
+                console.log("does not contain qa-edit-btn");
+                qaSubmit.classList.replace("qa-add-btn", "qa-edit-btn");
+            }
+            // save index of selected QA for use when saving edited QA
+            qaSubmit.index = i;
+            // when form is submitted, save edited QA
+            qaSubmit.addEventListener('click', saveEditedQA);
             break;
         }
     }
 }
 
-function editLocalQA(e) {
-    console.log(e.target);
-    // console.log("edited");
-    // const index = e.index;
-    // let qas;
-    // let titles;
-    // let classes;
-    // // get list of qas from storage
-    // if (localStorage.getItem("qas") === null) {
-    //     qas = [];
-    //     titles = [];
-    //     classes = [];
-    // } else {
-    //     qas = JSON.parse(localStorage.getItem("qas"));
-    //     titles = JSON.parse(localStorage.getItem("titles"));
-    //     classes = JSON.parse(localStorage.getItem("classes"));
-    // }
+// save edited QA to local storage
+function saveEditedQA(e) {
+    event.preventDefault();
+    const index = qaSubmit.index;
+    let qas;
+    let titles;
+    let classes;
+    // get list of qas from storage
+    if (localStorage.getItem("qas") === null) {
+        qas = [];
+        titles = [];
+        classes = [];
+    } else {
+        qas = JSON.parse(localStorage.getItem("qas"));
+        titles = JSON.parse(localStorage.getItem("titles"));
+        classes = JSON.parse(localStorage.getItem("classes"));
+    }
+    // change QA attributes at index in storage
+    qas[index] = qaHref.value;
+    titles[index] = qaTitle.value;
+    classes[index] = getIcon(qaHref.value);
+    
+    // set storage
+    localStorage.setItem("qas", JSON.stringify(qas));
+    localStorage.setItem("titles", JSON.stringify(titles));
+    localStorage.setItem("classes", JSON.stringify(classes));
+    window.location.reload(false);
+}
 
-    // qas[index] = qaHref.value;
-    // console.log(qaTitle.value);
-    // titles[index] = qaTitle.value
-    // classes[index] = "st-icon-more";
-
-    // // set storage
-    // localStorage.setItem("qas", JSON.stringify(qas));
-    // localStorage.setItem("titles", JSON.stringify(titles));
-    // localStorage.setItem("classes", JSON.stringify(classes));
-    // // window.location.reload(false);
+// try to match icon of url/title
+// if no match is found, return generic icon
+function getIcon(url) {
+    switch (true) {
+        case url.includes("amazon"):
+            return "st-icon-amazon"
+        case url.includes("google"):
+            return "st-icon-google"
+        case url.includes("facebook"):
+            return "st-icon-facebook-alt"
+        case url.includes("github"):
+            return "st-icon-github"
+        case url.includes("gmail"):
+            return "st-icon-gmail"
+        case url.includes("reddit"):
+            return "st-icon-reddit"
+        case url.includes("youtube"):
+            return "st-icon-youtube"
+        case url.includes("linkedin"):
+            return "st-icon-linkedin"
+        case url.includes("flickr"):
+            return "st-icon-flickr"
+        case url.includes("instagram"):
+            return "st-icon-instagram"
+        case url.includes("deviantart"):
+            return "st-icon-deviantart"
+        case url.incldues("pinterest"):
+            return "st-icon-pinterest"
+        case url.includes("yahoo"):
+            return "st-icon-yahoo"
+        case url.includes("yelp"):
+            return "st-icon-yelp"
+        case url.includes("imdb"):
+            return "st-icon-imdb"
+        default: 
+            console.log("no matching icon, setting generic icon");
+            return "st-icon-more";
+    }
 }

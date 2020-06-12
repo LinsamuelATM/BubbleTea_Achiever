@@ -95,17 +95,19 @@ Search css
 .search_input{
   width: 200px;
   box-sizing: border-box;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   font-size: 16px;
   background: transparent;
   background-image: url(../images/search.png);
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
   background-position-y: 7px;
   background-position-x: 2px;
   background-size: 30px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
   transition: width 0.4s ease-in-out;
-  color:black;
+  color:white;
 }
 
 
