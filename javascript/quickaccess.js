@@ -382,7 +382,7 @@ function getIcon(url) {
             return "st-icon-instagram"
         case url.includes("deviantart"):
             return "st-icon-deviantart"
-        case url.incldues("pinterest"):
+        case url.includes("pinterest"):
             return "st-icon-pinterest"
         case url.includes("yahoo"):
             return "st-icon-yahoo"

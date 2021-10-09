@@ -3,8 +3,8 @@ var temperature = document.getElementById("temp");
 var condition =  document.getElementById("condition");
 
 
-
 const API_KEY = '9fc09f16c94ad2e092e873fa8f558df0';
+
 var current_City = '';
 var weather_condition = '';
 var main = '';
@@ -12,46 +12,39 @@ var temp = '';
 var Lat = '';
 var Lon = '';
 
-
-
 document.addEventListener('DOMContentLoaded', getLocation)
-
-
 
 //fetching the geolocation: Lat and Lon
 function getLocation() {
 
-  /*
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPositionSuccess ,getPosErr);
-  } else { 
-    city.innerHTML = "Geolocation is not supported by this browser.";
-  }
-  */
+//   var URLRequest = 'http://ip-api.com/json/'
 
-  var URLRequest = 'http://ip-api.com/json/'
-  fetch(URLRequest)
-  .then(response => response.json())
-  .then(data =>{
-    console.log('location fetched')
-    Lat = data.lat;
-    Lon = data.lon;
-    fetchWeatherAPI(Lat, Lon)
-  }).catch(error => {
-    console.log(error)
-})
+//   fetch(URLRequest)
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log('location fetched')
+//     Lat = data.latitude;
+//     Lon = data.longitude;
+//     console.log(data);
+//     fetchWeatherAPI(Lat, Lon)
+//   }).catch(error => {
+//     console.log(error)
+// })
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(setLatLon);
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
 }
 
-/*
-function getPositionSuccess(position) {
+function setLatLon(position) {
+
+  console.log('location fetched')
   Lat = position.coords.latitude;
   Lon = position.coords.longitude;
-  localStorage.setItem('Lat', JSON.stringify(Lat))
-  localStorage.setItem('Lon', JSON.stringify(Lon))
   fetchWeatherAPI(Lat, Lon)
-
 }
-*/
 
 // getCurrentPosition: Error returned
 function getPosErr(err) {
